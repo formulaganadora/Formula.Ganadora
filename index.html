@@ -1,214 +1,274 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Fórmula Ganadora</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <title>Fórmula Ganadora</title>
+  <style>
+    :root {
+      --bg-color: #2c2c2c;
+      --text-color: white;
+      --card-bg: #1e1e1e;
+      --accent: #ff3c3c;
+      --link-color: #ffcc00;
+      --update-bg: #eee;
+      --update-text: #222;
+    }
 
-        body {
-            background-color: #121212;
-            color: white;
-            line-height: 1.6;
-        }
+    body.light {
+      --bg-color: #f2f2f2;
+      --text-color: #111;
+      --card-bg: rgb(249, 174, 174);
+      --accent: #e63946;
+      --link-color: #000000;
+      --update-bg: #ffffff;
+      --update-text: #000000;
+    }
 
-        header {
-            background-color: #ff3c3c;
-            padding: 20px;
-            text-align: center;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-        header h1 {
-            font-size: 2.5em;
-            color: white;
-        }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-        nav {
-            background-color:darkseagreen;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-        }
+    header {
+      background-color: var(--accent);
+      padding: 20px;
+      text-align: center;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+    header h1 {
+      font-size: 2.5em;
+      color: white;
+    }
 
-        nav a:hover {
-            background-color: #ff3c3c;
-        }
+    .mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: none;
+      color: var(--text-color);
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
+    nav {
+      background-color: var(--card-bg);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
 
-        section.intro {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.2em;
-        }
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 12px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
 
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
+    nav a:hover {
+      background-color: var(--accent);
+    }
 
-        .card {
-            background-color: cadetblue;
-            border-radius: 10px;
-            overflow: hidden;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+    section.intro {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.2em;
+    }
 
-        .card img {
-            width: 100%;
-            height: auto;
-        }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
 
-        .card h4 a {
-            color: #ffcc00;
-            text-decoration: none;
-            display: block;
-            padding: 15px;
-        }
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s;
+    }
 
-        .updates {
-            margin-top: 40px;
-            text-align: center;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        .updates h3 {
-            background-color: #ff3c3c;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
+    .card img {
+      width: 100%;
+      height: auto;
+    }
 
-        .updates ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    .card h4 a {
+      color: var(--link-color);
+      text-decoration: none;
+      display: block;
+      padding: 15px;
+    }
 
-        .updates li {
-            background-color: #eee;
-            color: #222;
-            margin: 8px auto;
-            padding: 10px;
-            width: fit-content;
-            border-radius: 5px;
-        }
+    .updates {
+      margin-top: 40px;
+      text-align: center;
+    }
 
-        footer {
-            margin-top: 40px;
-            background-color: cadetblue;
-            padding: 20px;
-            text-align: center;
-        }
+    .updates h3 {
+      background-color: var(--accent);
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
 
-        footer a {
-            color: #ffcc00;
-            text-decoration: none;
-        }
+    .updates ul {
+      list-style-type: none;
+      padding: 0;
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .cards {
-                flex-direction: column;
-                align-items: center;
-            }
+    .updates li {
+      background-color: var(--update-bg);
+      color: var(--update-text);
+      margin: 8px auto;
+      padding: 10px;
+      width: fit-content;
+      border-radius: 5px;
+    }
 
-            nav {
-                flex-direction: column;
-            }
+    footer {
+      margin-top: 40px;
+      background-color: var(--card-bg);
+      padding: 20px;
+      text-align: center;
+    }
 
-            nav a {
-                margin: 5px 0;
-            }
-        }
-    </style>
+    footer a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    /* Calendario grande */
+    #calendario .card {
+      width: 100%;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 5px 0;
+      }
+
+      .mode-toggle {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <button class="mode-toggle" onclick="toggleMode()">🌙 Modo Oscuro / Claro ☀️</button>
 
-    <header>
-        <h1>Fórmula Ganadora</h1>
-    </header>
+  <header>
+    <h1>Fórmula Ganadora</h1>
+  </header>
 
-    <nav>
-        <a href="newsletters.html">Newsletters</a>
-        <a href="revistas.html">Revistas</a>
-        <a href="ediespeciales.html">Ediciones Especiales</a>
-        <a href="#ventas">Ventas</a>
-        <a href="#calendario">Calendario</a>
-    </nav>
+  <nav>
+    <a href="newsletters.html">Newsletters</a>
+    <a href="revistas.html">Revistas</a>
+    <a href="ediespeciales.html">Ediciones Especiales</a>
+    <a href="#ventas">Ventas</a>
+    <a href="#calendario">Calendario</a>
+  </nav>
 
-    <div class="container">
-        <section class="intro">
-            <p>Con su suscripción, usted podrá entrar a este panel y tener todas las revistas. Si quiere renovar su suscripción envíenos un correo.</p>
-        </section>
+  <div class="container">
+    <section class="intro">
+      <p>
+        Con su suscripción, usted podrá entrar a este panel y tener todas las revistas. Si quiere renovar su suscripción envíenos un correo.
+      </p>
+    </section>
 
-        <section class="cards">
-            <div class="card">
-                <img src="img/Newsletters/n0311.png" alt="Newsletter">
-                <h4><a href="newsletters.html">Newsletters</a></h4>
-            </div>
-            <div class="card">
-                <img src="img/Revista Agosto 2024/portadaa.png" alt="Revista Agosto">
-                <h4><a href="revistas.html">Revistas</a></h4>
-            </div>
-            <div class="card">
-                <img src="img/willia.png" alt="Ediciones Especiales">
-                <h4><a href="ediespeciales.html">Ediciones especiales</a></h4>
-            </div>
-        </section>
+    <section class="cards">
+      <div class="card">
+        <img src="img/Newsletters/n0311.png" alt="Newsletter" />
+        <h4><a href="newsletters.html">Newsletters</a></h4>
+      </div>
+      <div class="card">
+        <img src="img/Revista Agosto 2024/portadaa.png" alt="Revista Agosto" />
+        <h4><a href="revistas.html">Revistas</a></h4>
+      </div>
+      <div class="card">
+        <img src="img/willia.png" alt="Ediciones Especiales" />
+        <h4><a href="ediespeciales.html">Ediciones especiales</a></h4>
+      </div>
+    </section>
 
-        <section class="updates">
-            <h3>Actualizaciones</h3>
-            <ul>
-                <li>La revista de marzo ya está disponible</li>
-                <li>La edición especial de McLaren estará disponible el día 17 de abril</li>
-                <li>La revista de abril saldrá el día 28</li>
-            </ul>
-        </section>
+    <section class="updates">
+      <h3>Actualizaciones</h3>
+      <ul>
+        <li>La revista de febrero ya está disponible</li>
+        <li>La revista de marzo saldrá el día 31</li>
+      </ul>
+    </section>
 
-        <section class="cards" id="ventas">
-            <div class="card">
-                <img src="img/VENTAS.png" alt="Ventas">
-                <h4>Ventas</h4>
-            </div>
-        </section>
+    <section class="cards" id="ventas">
+      <div class="card">
+        <img src="img/VENTAS.png" alt="Ventas" />
+        <h4>Ventas</h4>
+      </div>
+    </section>
 
-        <section class="cards" id="calendario">
-            <div class="card" style="width: 100%;">
-                <img src="img/Calendario 2025/4.png" alt="Calendario" style="width: 100%; height: auto;">
-                <h4>Calendario</h4>
-            </div>
-        </section>        
-    </div>
+    <section class="cards" id="calendario">
+      <div class="card">
+        <img src="img/Calendario 2025/4.png" alt="Calendario" style="width: 100%; height: auto;" />
+        <h4>Calendario</h4>
+      </div>
+    </section>
+  </div>
 
-    <footer>
-        Para solicitar cualquier cosa diríjase a <a href="mailto:formulaganadora.info@gmail.com">formulaganadora.info@gmail.com</a>
-    </footer>
+  <footer>
+    Para solicitar cualquier cosa diríjase a
+    <a href="mailto:formulaganadora.info@gmail.com">formulaganadora.info@gmail.com</a>
+  </footer>
 
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light");
+      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    }
+
+    // Cargar preferencia
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    };
+  </script>
 </body>
 </html>
