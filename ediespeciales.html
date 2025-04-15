@@ -1,105 +1,148 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title id="titulo">Ediciones especiales</title>
-        <style>
-            body {
-                background-color:burlywood;
-                background-size: 200px;
-                background-repeat: no-repeat;
-                color: rgb(255, 255, 255) ;
-            }
-            /* Estilos Responsive */
-            @media (min-width: 1024px) {
-            .container {
-                max-width: 900px;
-            }
-            input, button {
-                width: 60%;
-            }
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ediciones especiales</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
-        
-            @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-            .container {
+
+        body {
+            background-color: #121212;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #ff0000;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.4);
+        }
+
+        header h1 {
+            font-size: 2em;
+            color: white;
+        }
+
+        section.intro {
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        section.grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        article {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 12px;
+            width: 280px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        article:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+
+        article img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        article h4 {
+            font-size: 1.1em;
+        }
+
+        a {
+            color: #ff4d4d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            margin-top: 40px;
+        }
+
+        footer a {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        footer a:hover {
+            background-color: #cc0000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            article {
                 width: 90%;
             }
-            input, button {
-                width: 100%;
-            }
         }
-        
-            @media (max-width: 480px) {
-        
-        }
-            header{
-                border-style: solid;
-                border-color: rgb(255, 0, 0);
-                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                margin: 10px 20px;
-                background-color: cadetblue;
-            }
-            section {
-                display: flex;
-                justify-content: center; /* Centra los artículos horizontalmente */
-                flex-wrap: wrap; /* Permite que los artículos se muevan a la siguiente línea si es necesario */
-            }
-            article{
-                margin: 15px;
-                text-align: center;
-            }
-            #a {
-                color: rgb(255, 255, 255);
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            #h4 {
-                color: rgb(255, 255, 255);
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            * {
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Ediciones especiales</h1>
-        </header>
-        <br>
-        <section> 
-            Con su suscripción, usted podrá entrar a este panel y tener todas las revistas.
-        </section>
-        <section>
-            <article>
-                <img src="img/Escuderías/1.png" width="300px">        
-                <h4><a id="a" href="fwilliams.html">Williams</a></h4>
-            </article>
-            <article>
-                <img src="img/Escuderías/2.png" width="300px">
-                <h4><a id="a" href="fminardi.html">Minardi</a></h4>
-            </article>
-            <article>
-                <img src="img/Escuderías/3.png" width="300px">
-                <h4>McLaren</h4>
-            </article>
-            <article>
-                <img src="img/Escuderías/4.png" width="300px">
-                <h4>Brabham</h4> 
-            </article>
-            <article>
-                <img src="img/Escuderías/5.png" width="300px">
-                <h4>Tyrrell</h4>
-            </article>
-            <article>
-                <img src="img/Escuderías/6.png" width="300px">
-                <h4>Jordan</h4>
-            </article>
-        </section>
-        <footer>
-            <a href="index.html">Volver a la página de inicio</a>
-        </footer>
-    </body>
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ediciones especiales</h1>
+    </header>
+
+    <section class="intro">
+        Con su suscripción, usted podrá entrar a este panel y tener todas las revistas.
+    </section>
+
+    <section class="grid">
+        <article>
+            <img src="img/Escuderías/1.png" alt="Williams">
+            <h4><a href="fwilliams.html">Williams</a></h4>
+        </article>
+        <article>
+            <img src="img/Escuderías/2.png" alt="Minardi">
+            <h4><a href="fminardi.html">Minardi</a></h4>
+        </article>
+        <article>
+            <img src="img/Escuderías/3.png" alt="McLaren">
+            <h4>McLaren</h4>
+        </article>
+        <article>
+            <img src="img/Escuderías/4.png" alt="Brabham">
+            <h4>Brabham</h4>
+        </article>
+        <article>
+            <img src="img/Escuderías/5.png" alt="Tyrrell">
+            <h4>Tyrrell</h4>
+        </article>
+        <article>
+            <img src="img/Escuderías/6.png" alt="Jordan">
+            <h4>Jordan</h4>
+        </article>
+    </section>
+
+    <footer>
+        <a href="index.html">Volver a la página de inicio</a>
+    </footer>
+
+</body>
 </html>
