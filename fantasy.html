@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Fantasy F1 - Selección de equipo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f7f7f7;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #d62828;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #b71c1c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Fantasy F1 - Elige tu equipo</h2>
+
+  <form id="f1FantasyForm">
+    <label for="nombre">Tu nombre</label>
+    <input type="text" name="nombre" id="nombre" required>
+
+    <label for="piloto1">Piloto 1</label>
+    <select name="piloto1" id="piloto1" required>
+      <option value="">Selecciona</option>
+    </select>
+
+    <label for="piloto2">Piloto 2</label>
+    <select name="piloto2" id="piloto2" required>
+      <option value="">Selecciona</option>
+    </select>
+
+    <label for="constructor">Constructor</label>
+    <select name="constructor" id="constructor" required>
+      <option value="">Selecciona</option>
+      <option value="Red Bull">Red Bull</option>
+      <option value="Ferrari">Ferrari</option>
+      <option value="Mercedes">Mercedes</option>
+      <option value="McLaren">McLaren</option>
+      <option value="Aston Martin">Aston Martin</option>
+      <option value="RB">RB</option>
+      <option value="Haas">Haas</option>
+      <option value="Williams">Williams</option>
+      <option value="Alpine">Alpine</option>
+      <option value="Kick Sauber">Kick Sauber</option>
+    </select>
+
+    <button type="submit">Guardar equipo</button>
+  </form>
+
+  <script>
+    const pilotos = [
+      "Max Verstappen", "Yuki Tsunoda", "Charles Leclerc", "Lewis Hamilton",
+      "Kimi Antonelli", "George Russell", "Lando Norris", "Oscar Piastri",
+      "Fernando Alonso", "Lance Stroll", "Isack Hadjar", "Liam Lawson",
+      "Esteban Ocon", "Ollie Bearman", "Alex Albon", "Carlos Sainz",
+      "Jack Doohan", "Pierre Gasly", "Gabriel Bortoleto", "Nico Hülkenberg"
+    ];
+
+    const piloto1Select = document.getElementById("piloto1");
+    const piloto2Select = document.getElementById("piloto2");
+
+    function llenarSelects() {
+      piloto1Select.innerHTML = '<option value="">Selecciona</option>';
+      piloto2Select.innerHTML = '<option value="">Selecciona</option>';
+
+      pilotos.forEach(piloto => {
+        const option1 = document.createElement("option");
+        option1.value = piloto;
+        option1.textContent = piloto;
+        piloto1Select.appendChild(option1);
+
+        const option2 = document.createElement("option");
+        option2.value = piloto;
+        option2.textContent = piloto;
+        piloto2Select.appendChild(option2);
+      });
+    }
+
+    function actualizarPiloto2() {
+      const seleccionado = piloto1Select.value;
+      piloto2Select.innerHTML = '<option value="">Selecciona</option>';
+
+      pilotos.forEach(piloto => {
+        if (piloto !== seleccionado) {
+          const option = document.createElement("option");
+          option.value = piloto;
+          option.textContent = piloto;
+          piloto2Select.appendChild(option);
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      llenarSelects();
+      piloto1Select.addEventListener("change", actualizarPiloto2);
+    });
+
+    document.getElementById("f1FantasyForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = {
+        nombre: this.nombre.value,
+        piloto1: this.piloto1.value,
+        piloto2: this.piloto2.value,
+        constructor: this.constructor.value
+      };
+
+      fetch("https://script.google.com/macros/s/AKfycbxMSEbhLqxzzfR7QRZKbenjXkBnbZtMRyMbA5nUnz2XPc80I4tf7adbTqOC2qf42zOjhQ/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(r => r.text())
+      .then(respuesta => {
+        alert("¡Equipo guardado correctamente!");
+        this.reset();
+        llenarSelects();
+      })
+      .catch(error => {
+        console.error("Error al guardar:", error);
+        alert("Hubo un error al guardar el equipo. Intenta de nuevo.");
+      });
+    });
+  </script>
+</body>
+</html>
