@@ -42,24 +42,24 @@
 </head>
 <body>
 
-  <h2>Fantasy F1 - Elige tu equipo</h2>
+  <h2>🏎️ Fantasy F1 - Elige tu equipo</h2>
 
-  <form id="f1FantasyForm">
+  <form action="https://formsubmit.co/formulaganadora.info@gmail.com" method="POST">
     <label for="nombre">Tu nombre</label>
-    <input type="text" name="nombre" id="nombre" required>
+    <input type="text" name="Nombre" id="nombre" required>
 
     <label for="piloto1">Piloto 1</label>
-    <select name="piloto1" id="piloto1" required>
+    <select name="Piloto 1" id="piloto1" required>
       <option value="">Selecciona</option>
     </select>
 
     <label for="piloto2">Piloto 2</label>
-    <select name="piloto2" id="piloto2" required>
+    <select name="Piloto 2" id="piloto2" required>
       <option value="">Selecciona</option>
     </select>
 
     <label for="constructor">Constructor</label>
-    <select name="constructor" id="constructor" required>
+    <select name="Constructor" id="constructor" required>
       <option value="">Selecciona</option>
       <option value="Red Bull">Red Bull</option>
       <option value="Ferrari">Ferrari</option>
@@ -73,7 +73,11 @@
       <option value="Kick Sauber">Kick Sauber</option>
     </select>
 
-    <button type="submit">Guardar equipo</button>
+    <!-- Opcional: evitar captcha y redirigir -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="fantasy.html">
+
+    <button type="submit"> Guardar equipo</button>
   </form>
 
   <script>
@@ -122,33 +126,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       llenarSelects();
       piloto1Select.addEventListener("change", actualizarPiloto2);
-    });
-
-    document.getElementById("f1FantasyForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const data = {
-        nombre: this.nombre.value,
-        piloto1: this.piloto1.value,
-        piloto2: this.piloto2.value,
-        constructor: this.constructor.value
-      };
-
-      fetch("https://script.google.com/macros/s/AKfycbxMSEbhLqxzzfR7QRZKbenjXkBnbZtMRyMbA5nUnz2XPc80I4tf7adbTqOC2qf42zOjhQ/exec", {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify(data),
-        headers: {'Content-Type': 'application/json'
-      })
-      .then(r => r.text())
-      .then(respuesta => {
-        alert("¡Equipo guardado correctamente!");
-        this.reset();
-        llenarSelects();
-      })
-      .catch(error => {
-        console.error("Error al guardar:", error);
-        alert("Hubo un error al guardar el equipo. Intenta de nuevo.");
-      });
     });
   </script>
 </body>
