@@ -35,8 +35,14 @@
       cursor: pointer;
       margin-top: 20px;
     }
-    button:hover {
-      background-color: #b71c1c;
+    button:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+    .presupuesto {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -49,63 +55,84 @@
     <input type="text" name="Nombre" id="nombre" required>
 
     <label for="piloto1">Piloto 1</label>
-    <select name="Piloto 1" id="piloto1" required>
-      <option value="">Selecciona</option>
-    </select>
+    <select name="Piloto 1" id="piloto1" required></select>
 
     <label for="piloto2">Piloto 2</label>
-    <select name="Piloto 2" id="piloto2" required>
-      <option value="">Selecciona</option>
-    </select>
+    <select name="Piloto 2" id="piloto2" required></select>
 
     <label for="constructor">Constructor</label>
     <select name="Constructor" id="constructor" required>
       <option value="">Selecciona</option>
-      <option value="Red Bull">Red Bull</option>
-      <option value="Ferrari">Ferrari</option>
-      <option value="Mercedes">Mercedes</option>
-      <option value="McLaren">McLaren</option>
-      <option value="Aston Martin">Aston Martin</option>
-      <option value="RB">RB</option>
-      <option value="Haas">Haas</option>
-      <option value="Williams">Williams</option>
-      <option value="Alpine">Alpine</option>
-      <option value="Kick Sauber">Kick Sauber</option>
     </select>
 
-    <!-- Opcional: evitar captcha y redirigir -->
+    <div class="presupuesto">
+      💰 Presupuesto: <span id="total">0</span> / 80 millones
+    </div>
+
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="fantasy.html">
 
-    <button type="submit"> Guardar equipo</button>
+    <button type="submit" id="submitBtn" disabled>Guardar equipo</button>
   </form>
 
   <script>
-    const pilotos = [
-      "Max Verstappen", "Yuki Tsunoda", "Charles Leclerc", "Lewis Hamilton",
-      "Kimi Antonelli", "George Russell", "Lando Norris", "Oscar Piastri",
-      "Fernando Alonso", "Lance Stroll", "Isack Hadjar", "Liam Lawson",
-      "Esteban Ocon", "Ollie Bearman", "Alex Albon", "Carlos Sainz",
-      "Jack Doohan", "Pierre Gasly", "Gabriel Bortoleto", "Nico Hülkenberg"
-    ];
+    const pilotos = {
+      "Max Verstappen": 35,
+      "Yuki Tsunoda": 18,
+      "Charles Leclerc": 24,
+      "Lewis Hamilton": 20,
+      "Kimi Antonelli": 22,
+      "George Russell": 27.5,
+      "Lando Norris": 32.5,
+      "Oscar Piastri": 29,
+      "Fernando Alonso": 18,
+      "Lance Stroll": 15,
+      "Isack Hadjar": 18,
+      "Liam Lawson": 20,
+      "Esteban Ocon": 14,
+      "Ollie Bearman": 12,
+      "Alex Albon": 17,
+      "Carlos Sainz": 20,
+      "Jack Doohan": 10,
+      "Pierre Gasly": 14,
+      "Gabriel Bortoleto": 7,
+      "Nico Hülkenberg": 12
+    };
+
+    const constructores = {
+      "Red Bull": 30,
+      "Ferrari": 27,
+      "Mercedes": 26,
+      "McLaren": 28,
+      "Aston Martin": 20,
+      "RB": 18,
+      "Haas": 15,
+      "Williams": 17,
+      "Alpine": 16,
+      "Kick Sauber": 14
+    };
 
     const piloto1Select = document.getElementById("piloto1");
     const piloto2Select = document.getElementById("piloto2");
+    const constructorSelect = document.getElementById("constructor");
+    const totalSpan = document.getElementById("total");
+    const submitBtn = document.getElementById("submitBtn");
 
     function llenarSelects() {
       piloto1Select.innerHTML = '<option value="">Selecciona</option>';
       piloto2Select.innerHTML = '<option value="">Selecciona</option>';
+      constructorSelect.innerHTML = '<option value="">Selecciona</option>';
 
-      pilotos.forEach(piloto => {
-        const option1 = document.createElement("option");
-        option1.value = piloto;
-        option1.textContent = piloto;
-        piloto1Select.appendChild(option1);
+      Object.keys(pilotos).forEach(piloto => {
+        const opt1 = new Option(`${piloto} (${pilotos[piloto]}M)`, piloto);
+        const opt2 = new Option(`${piloto} (${pilotos[piloto]}M)`, piloto);
+        piloto1Select.appendChild(opt1);
+        piloto2Select.appendChild(opt2);
+      });
 
-        const option2 = document.createElement("option");
-        option2.value = piloto;
-        option2.textContent = piloto;
-        piloto2Select.appendChild(option2);
+      Object.keys(constructores).forEach(equipo => {
+        const option = new Option(`${equipo} (${constructores[equipo]}M)`, equipo);
+        constructorSelect.appendChild(option);
       });
     }
 
@@ -113,19 +140,37 @@
       const seleccionado = piloto1Select.value;
       piloto2Select.innerHTML = '<option value="">Selecciona</option>';
 
-      pilotos.forEach(piloto => {
+      Object.keys(pilotos).forEach(piloto => {
         if (piloto !== seleccionado) {
-          const option = document.createElement("option");
-          option.value = piloto;
-          option.textContent = piloto;
+          const option = new Option(`${piloto} (${pilotos[piloto]}M)`, piloto);
           piloto2Select.appendChild(option);
         }
       });
+
+      calcularTotal();
+    }
+
+    function calcularTotal() {
+      const p1 = piloto1Select.value;
+      const p2 = piloto2Select.value;
+      const cons = constructorSelect.value;
+
+      let total = 0;
+      if (p1) total += pilotos[p1];
+      if (p2) total += pilotos[p2];
+      if (cons) total += constructores[cons];
+
+      totalSpan.textContent = total.toFixed(1);
+      submitBtn.disabled = total === 0 || total > 80;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
       llenarSelects();
-      piloto1Select.addEventListener("change", actualizarPiloto2);
+      piloto1Select.addEventListener("change", () => {
+        actualizarPiloto2();
+      });
+      piloto2Select.addEventListener("change", calcularTotal);
+      constructorSelect.addEventListener("change", calcularTotal);
     });
   </script>
 </body>
