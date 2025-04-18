@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Revista McLaren - Flipbook</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #flipbook-container {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    #flipbook {
+      width: 100%;
+      height: 100%;
+      background: url('img/fg.png') no-repeat center center;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pages-container {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .page {
+      flex: 0 0 100vw;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 10;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #e50914;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:disabled {
+      background-color: #555;
+      cursor: not-allowed;
+    }
+
+    #fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 15;
+    }
+
+    #fullscreen-btn img {
+      width: 32px;
+      height: 32px;
+      filter: invert(1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="flipbook-container">
+    <button id="fullscreen-btn" title="Pantalla completa">
+      <img src="img/pc3.jpg" alt="Pantalla completa" />
+    </button>
+
+    <div id="flipbook">
+      <div class="pages-container" id="pagesContainer">
+        <!-- Páginas insertadas dinámicamente -->
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="prev">⟨ Anterior</button>
+      <button id="next">Siguiente ⟩</button>
+    </div>
+  </div>
+
+  <script>
+    // Lista de páginas a mostrar
+    const imagePaths = [
+      'p', '1', '2', '3', '4', '5', '6', '7',
+      '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18' '38'
+    ];
+
+    const pagesContainer = document.getElementById('pagesContainer');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    let currentPage = 0;
+
+    // Cargar páginas dinámicamente
+    imagePaths.forEach((name, index) => {
+      const pageDiv = document.createElement('div');
+      pageDiv.classList.add('page');
+
+      const img = document.createElement('img');
+      img.src = `img/Revista McLaren 2025/${name}.png`;
+      img.alt = `Página ${index + 1}`;
+
+      pageDiv.appendChild(img);
+      pagesContainer.appendChild(pageDiv);
+    });
+
+    const totalPages = imagePaths.length;
+
+    function updateButtons() {
+      prevButton.disabled = currentPage === 0;
+      nextButton.disabled = currentPage === totalPages - 1;
+    }
+
+    function updatePage() {
+      const offsetX = -currentPage * window.innerWidth;
+      pagesContainer.style.transform = `translateX(${offsetX}px)`;
+      updateButtons();
+    }
+
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePage();
+      }
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        updatePage();
+      }
+    });
+
+    window.addEventListener('resize', updatePage);
+    updateButtons();
+
+    // Pantalla completa
+    document.getElementById('fullscreen-btn').addEventListener('click', () => {
+      const container = document.getElementById('flipbook-container');
+      if (!document.fullscreenElement) {
+        container.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  </script>
+
+</body>
+</html>
