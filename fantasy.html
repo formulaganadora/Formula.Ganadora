@@ -77,39 +77,39 @@
 
   <script>
     const pilotos = {
-      "Max Verstappen": 35,
-      "Yuki Tsunoda": 18,
-      "Charles Leclerc": 24,
-      "Lewis Hamilton": 20,
-      "Kimi Antonelli": 22,
-      "George Russell": 27.5,
-      "Lando Norris": 32.5,
-      "Oscar Piastri": 29,
-      "Fernando Alonso": 18,
-      "Lance Stroll": 15,
-      "Isack Hadjar": 18,
-      "Liam Lawson": 20,
-      "Esteban Ocon": 14,
-      "Ollie Bearman": 12,
-      "Alex Albon": 17,
-      "Carlos Sainz": 20,
-      "Jack Doohan": 10,
-      "Pierre Gasly": 14,
-      "Gabriel Bortoleto": 7,
-      "Nico Hülkenberg": 12
+      "Pierre Gasly": 11.9,
+      "Jack Doohan": 8.2,
+      "Fernando Alonso": 14.6,
+      "Lance Stroll": 12.3,
+      "Charles Leclerc": 24.0,
+      "Lewis Hamilton": 18.3,
+      "Esteban Ocon": 11.4,
+      "Ollie Bearman": 9.9,
+      "Lando Norris": 48.1,
+      "Oscar Piastri": 40.8,
+      "George Russell": 36.1,
+      "Kimi Antonelli": 19.2,
+      "Liam Lawson": 16.3,
+      "Isack Hadjar": 15.1,
+      "Max Verstappen": 45.9,
+      "Yuki Tsunoda": 14.9,
+      "Nico Hülkenberg": 9.8,
+      "Gabriel Bortoleto": 5.8,
+      "Carlos Sainz": 16.3,
+      "Alexander Albon": 15.8
     };
 
     const constructores = {
-      "Red Bull": 30,
-      "Ferrari": 27,
-      "Mercedes": 26,
-      "McLaren": 28,
-      "Aston Martin": 20,
-      "RB": 18,
-      "Haas": 15,
-      "Williams": 17,
-      "Alpine": 16,
-      "Kick Sauber": 14
+      "Red Bull": 26.5,
+      "Ferrari": 21.7,
+      "Mercedes": 24.9,
+      "McLaren": 33.8,
+      "Aston Martin": 15.8,
+      "RB": 17.6,
+      "Haas": 12.5,
+      "Williams": 17.4,
+      "Alpine": 11.5,
+      "Kick Sauber": 8.9
     };
 
     const piloto1Select = document.getElementById("piloto1");
@@ -166,9 +166,7 @@
 
     document.addEventListener("DOMContentLoaded", () => {
       llenarSelects();
-      piloto1Select.addEventListener("change", () => {
-        actualizarPiloto2();
-      });
+      piloto1Select.addEventListener("change", actualizarPiloto2);
       piloto2Select.addEventListener("change", calcularTotal);
       constructorSelect.addEventListener("change", calcularTotal);
     });
