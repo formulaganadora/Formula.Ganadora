@@ -51,6 +51,12 @@
       font-weight: bold;
       color: #d62828;
     }
+    #mensajeError {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -76,6 +82,8 @@
       💰 Presupuesto: <span id="total">0</span> / 80 millones
     </div>
 
+    <div id="mensajeError">⚠️ Asegúrate de elegir 2 pilotos y 1 constructor sin pasarte del presupuesto.</div>
+
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_next" value="fantasy.html">
 
@@ -86,8 +94,13 @@
     Cargando contador...
   </div>
 
+  <footer style="text-align: center; margin-top: 30px;">
+    <a href="index.html">
+      <button style="background-color: #555; margin-top: 10px;">⬅️ Volver al inicio</button>
+    </a>
+  </footer>
+
   <script>
-    // Datos de pilotos y constructores
     const pilotos = {
       "Pierre Gasly": 11.9,
       "Jack Doohan": 8.2,
@@ -124,14 +137,13 @@
       "Kick Sauber": 8.9
     };
 
-    // Variables del formulario
     const piloto1Select = document.getElementById("piloto1");
     const piloto2Select = document.getElementById("piloto2");
     const constructorSelect = document.getElementById("constructor");
     const totalSpan = document.getElementById("total");
     const submitBtn = document.getElementById("submitBtn");
+    const mensajeError = document.getElementById("mensajeError");
 
-    // Función para llenar los selects
     function llenarSelects() {
       piloto1Select.innerHTML = '<option value="">Selecciona</option>';
       piloto2Select.innerHTML = '<option value="">Selecciona</option>';
@@ -150,7 +162,6 @@
       });
     }
 
-    // Función para actualizar el Piloto 2 basado en el seleccionado en el Piloto 1
     function actualizarPiloto2() {
       const seleccionado = piloto1Select.value;
       piloto2Select.innerHTML = '<option value="">Selecciona</option>';
@@ -165,7 +176,6 @@
       calcularTotal();
     }
 
-    // Función para calcular el total
     function calcularTotal() {
       const p1 = piloto1Select.value;
       const p2 = piloto2Select.value;
@@ -177,29 +187,28 @@
       if (cons) total += constructores[cons];
 
       totalSpan.textContent = total.toFixed(1);
-      submitBtn.disabled = total === 0 || total > 80;
+
+      const formularioCompleto = p1 && p2 && cons;
+      const dentroDePresupuesto = total <= 80;
+
+      submitBtn.disabled = !(formularioCompleto && dentroDePresupuesto);
+      mensajeError.style.display = submitBtn.disabled ? "block" : "none";
     }
 
-    // Función para iniciar el contador
     function iniciarContador() {
-      // La fecha y hora del próximo Gran Premio de Arabia Saudí
       const fechaProximaCarrera = new Date("April 26, 2025 22:30:00").getTime();
-
-      // Actualiza el contador cada segundo
-      const intervalo = setInterval(function() {
+      const intervalo = setInterval(() => {
         const ahora = new Date().getTime();
         const diferencia = fechaProximaCarrera - ahora;
 
-        // Calcula los días, horas, minutos y segundos restantes
         const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
         const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-        // Muestra el resultado en el elemento con id="countdown"
-        document.getElementById("countdown").innerHTML = `Límite para introducir el equipo para Miami🏁: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        document.getElementById("countdown").innerHTML =
+          `Límite para introducir el equipo para Miami🏁: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
 
-        // Si la cuenta atrás termina, muestra un mensaje
         if (diferencia < 0) {
           clearInterval(intervalo);
           document.getElementById("countdown").innerHTML = "¡La carrera ha comenzado!";
@@ -207,20 +216,18 @@
       }, 1000);
     }
 
-    // Inicializa todo cuando el documento esté cargado
     document.addEventListener("DOMContentLoaded", () => {
       llenarSelects();
       piloto1Select.addEventListener("change", actualizarPiloto2);
-      piloto2Select.addEventListener("change", calcularTotal);
-      constructorSelect.addEventListener("change", calcularTotal);
-      iniciarContador();  // Inicia el contador al cargar la página
+
+      // Aseguramos que cualquier cambio activa la validación, útil para móviles
+      [piloto1Select, piloto2Select, constructorSelect].forEach(el => {
+        el.addEventListener("change", calcularTotal);
+        el.addEventListener("input", calcularTotal);
+      });
+
+      iniciarContador();
     });
   </script>
-  
-    <footer style="text-align: center; margin-top: 30px;">
-      <a href="index.html">
-        <button style="background-color: #555; margin-top: 10px;">⬅️ Volver al inicio</button>
-      </a>
-    </footer>
-  </body>
+</body>
 </html>
