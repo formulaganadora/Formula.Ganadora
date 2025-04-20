@@ -183,7 +183,7 @@
     // Función para iniciar el contador
     function iniciarContador() {
       // La fecha y hora del próximo Gran Premio de Arabia Saudí
-      const fechaProximaCarrera = new Date("April 19, 2025 19:00:00").getTime();
+      const fechaProximaCarrera = new Date("April 26, 2025 22:30:00").getTime();
 
       // Actualiza el contador cada segundo
       const intervalo = setInterval(function() {
@@ -197,7 +197,7 @@
         const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
         // Muestra el resultado en el elemento con id="countdown"
-        document.getElementById("countdown").innerHTML = `Límite para introducir el equipo para Jeddahm🏁: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+        document.getElementById("countdown").innerHTML = `Límite para introducir el equipo para Miami🏁: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
 
         // Si la cuenta atrás termina, muestra un mensaje
         if (diferencia < 0) {
