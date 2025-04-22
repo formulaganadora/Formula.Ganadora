@@ -1,107 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fantasy F1 - Clasificación</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fantasy F1 2025</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #121212;
-      color: #ffffff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #e10600;
-      padding: 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-      color: #fff;
-    }
-    .container {
+      background-color: #f4f7fa;
       padding: 2rem;
     }
-    h2 {
-      margin-top: 2rem;
-      border-bottom: 2px solid #e10600;
-      display: inline-block;
-      padding-bottom: 0.5rem;
+
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 1rem;
     }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       margin-top: 1rem;
-      background-color: #1e1e1e;
     }
+
+    thead {
+      background-color: #1f2937;
+      color: white;
+    }
+
     th, td {
-      border: 1px solid #333;
-      padding: 0.5rem;
+      padding: 0.6rem;
+      border: 1px solid #e0e0e0;
       text-align: center;
-      color: #fff;
+      font-size: 0.95rem;
     }
-    th {
-      background-color: #2c2c2c;
+
+    tr:nth-child(even) {
+      background-color: #f8f9fb;
     }
-    input[type="text"], input[type="number"] {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: #fff;
-      text-align: center;
+
+    tr:hover {
+      background-color: #e8f0fe;
     }
-    input[type="text"]:focus, input[type="number"]:focus {
-      outline: none;
-      background-color: #2a2a2a;
+
+    @media (max-width: 768px) {
+      table {
+        font-size: 0.75rem;
+      }
+
+      th, td {
+        padding: 0.4rem;
+      }
+
+      h1, h2 {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Fantasy F1 2025</h1>
-  </header>
-
-  <div class="container">
-    <h2>Puntos por Piloto (24 carreras)</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Piloto</th>
-          <!-- Carreras 1 a 24 -->
-          <!-- Puedes cambiar a 'C1', 'C2'... o 'Bahrein', etc. -->
-          <!-- Lo dejo simple para que lo personalices -->
-          ${Array.from({ length: 24 }, (_, i) => `<th>C${i + 1}</th>`).join("")}
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${Array.from({ length: 20 }, (_, i) => `
-        <tr>
-          <td><input type="text" placeholder="Piloto ${i + 1}"></td>
-          ${Array.from({ length: 24 }, () => `<td><input type="number" min="0"></td>`).join("")}
-          <td><input type="number" readonly></td>
-        </tr>`).join("")}
-      </tbody>
-    </table>
-
-    <h2>Clasificación de Usuarios</h2>
+  <!-- Clasificación de Usuarios -->
+  <div class="section">
+    <h1>🏁 Fantasy F1 - Clasificación de Usuarios</h1>
     <table>
       <thead>
         <tr>
           <th>Usuario</th>
+          <!-- Carreras 1-24 -->
+          <!-- Puedes copiar/pegar más si lo necesitas -->
+          <th>C1</th><th>C2</th><th>C3</th><th>C4</th><th>C5</th><th>C6</th>
+          <th>C7</th><th>C8</th><th>C9</th><th>C10</th><th>C11</th><th>C12</th>
+          <th>C13</th><th>C14</th><th>C15</th><th>C16</th><th>C17</th><th>C18</th>
+          <th>C19</th><th>C20</th><th>C21</th><th>C22</th><th>C23</th><th>C24</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Usuario 1</td>
+          <!-- Escribe los puntos directamente -->
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Usuario 2</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Clasificación de Pilotos -->
+  <div class="section">
+    <h2>🏎️ Clasificación de Pilotos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Piloto</th>
+          <th>Australia</th><th>China</th><th>Japón</th><th>Baréin</th><th>Arabia Saudí</th><th>Miami</th>
+          <th>C7</th><th>C8</th><th>C9</th><th>C10</th><th>C11</th><th>C12</th>
+          <th>C13</th><th>C14</th><th>C15</th><th>C16</th><th>C17</th><th>C18</th>
+          <th>C19</th><th>C20</th><th>C21</th><th>C22</th><th>C23</th><th>C24</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Max Verstappen</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <!-- Añadir más pilotos -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Clasificación de Constructores -->
+  <div class="section">
+    <h2>🏗️ Clasificación de Constructores</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Equipo</th>
+          <th>Piloto 1</th>
+          <th>Piloto 2</th>
           <th>Puntos Totales</th>
         </tr>
       </thead>
       <tbody>
-        ${Array.from({ length: 10 }, (_, i) => `
         <tr>
-          <td><input type="text" placeholder="Usuario ${i + 1}"></td>
-          <td><input type="number" min="0"></td>
-        </tr>`).join("")}
+          <td>Red Bull</td>
+          <td>Verstappen</td>
+          <td>Pérez</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Mercedes</td>
+          <td>Hamilton</td>
+          <td>Russell</td>
+          <td></td>
+        </tr>
+        <!-- Más constructores -->
       </tbody>
     </table>
   </div>
