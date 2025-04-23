@@ -5,31 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fantasy F1 2025</title>
   <style>
+    :root {
+      --bg-color: #fff1f1;
+      --text-color: white;
+      --card-bg: #ff0000;
+      --accent: #ff3c3c;
+      --link-color: #ffcc00;
+      --update-bg: #eee;
+      --update-text: #222;
+      --primary-color: #ff3c3c;
+      --hover-color: #ff7f7f;
+      --table-bg: #ffa2a2;
+      --table-color:rgb(0, 0, 0) ;
+      --table-coloreven: #ffffff;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f7fa;
-      padding: 2rem;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--secondary-color);
+  padding: 0;
+  }
+
+
+    nav {
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
     }
 
-    h1, h2 {
+    nav a {
+      color: whitesmoke;
+      text-decoration: none;
+      padding: 12px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      background-color: black;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #ff0000;
+    }
+
+    .mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background:black ;
+      border: none;
+      color: var(--text-color);
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    body.dark-mode {
+      --bg-color: #151515;
+      --text-color: #ffea00;
+      --card-bg: #000000;
+      --accent: #ff4848;
+      --link-color: #ffcc00;
+      --update-bg: #656565;
+      --update-text: #f0f0f0;
+      --primary-color: #ff1616;
+      --hover-color: #ffafaf;
+      --table-bg: #8e2a2a;
+      --table-color:white ;
+      --table-coloreven: #520808;
+    }
+
+
+    h2 {
       text-align: center;
-      color: #2c3e50;
-      margin-bottom: 1rem;
+      margin: 2rem 0 1rem;
+      color: var(--update-text)
+    }
+
+    header {
+      background-color: var(--primary-color); 
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      color: white;
     }
 
     .section {
-      margin-bottom: 3rem;
+      padding: 1rem 2rem;
+      max-width: 100%;
+      overflow-x: auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background: white;
+      background: var(--table-bg);
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -37,8 +114,8 @@
     }
 
     thead {
-      background-color: #ff0000;
-      color: white;
+      background-color: var(--primary-color);
+      color: var(--bg-color);
     }
 
     th, td {
@@ -46,53 +123,109 @@
       border: 1px solid #e0e0e0;
       text-align: center;
       font-size: 0.95rem;
+      color: var(--table-color);
     }
 
     tr:nth-child(even) {
-      background-color: #f8f9fb;
+      background-color: var(--table-coloreven);
     }
 
     tr:hover {
-      background-color: #c2bebe;
+      background-color: var(--hover-color);
     }
 
     @media (max-width: 768px) {
-      table {
-        font-size: 0.75rem;
+      body {
+        padding: 0;
       }
-
-      th, td {
-        padding: 0.4rem;
+      .section {
+        padding: 1rem;
       }
-
       h1, h2 {
         font-size: 1.2rem;
       }
+      table {
+        font-size: 0.75rem;
+      }
+      th, td {
+        padding: 0.4rem;
+      }
+      nav {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin: 5px 0;
+      }
+
+      .mode-toggle {
+        top: 10px;
+        right: 10px;
+      }
     }
+
+    .rules {
+      background: var(--update-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--update-text) ;
+    }
+
+    .rules h2 {
+      color: var(--primary-color);
+    }
+
+    .rules ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    .rules li {
+      margin-bottom: 0.5rem;
+    }
+
   </style>
 </head>
 <body>
+  <button class="mode-toggle" onclick="toggleMode()">🌙 Modo Oscuro / Claro ☀️</button>
+  <header>
+    <h1>Fantasy F1</h1>
+  </header>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="fantasy.html">Elección para la próxima carrera</a>
+      <a href="#usuarios">Clasificación Usuarios</a>
+      <a href="#pilotos">Clasificación Pilotos</a>
+      <a href="#equipos">Clasificación Constructores</a>
+    </nav>
+    
+  
 
-  <!-- Clasificación de Usuarios -->
-  <div class="section">
-    <h1>🏁 Fantasy F1 - Clasificación de Usuarios</h1>
+
+  <div id="usuarios" class="section">
+    <h2>Clasificación de Usuarios</h2>
     <table>
       <thead>
         <tr>
           <th>Usuario</th>
           
-          <th>Australia</th><th>China</th><th>Japón</th><th>Baréin</th><th>Arabia Saudí</th><th>Miami</th>
+          <th>Total</th><th>Australia</th><th>China</th><th>Japón</th><th>Baréin</th><th>Arabia Saudí</th><th>Miami</th>
           <th>Imola</th><th>Mónaco</th><th>España</th><th>Canadá</th><th>Austria</th><th>Gran Bretaña</th>
           <th>Bélgica</th><th>Hungría</th><th>Países Bajos</th><th>Italia</th><th>Azerbaiyán</th><th>Singapur</th>
           <th>Estados Unidos</th><th>México</th><th>Brasil</th><th>Las Vegas</th><th>Catar</th><th>Abu Dhabi</th>
-          <th>Total</th>
+          
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Magdalena del Riego</td>
           
-          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
@@ -100,7 +233,61 @@
         </tr>
         <tr>
           <td>Miki del Riego</td>
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Javi</td>
+          
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Sergio N.</td>
+          
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Rodrigo del Barrio</td>
+          
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Sevi</td>
+          
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Nieto</td>
+          
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Andrés</td>
+          
+          <th>0</th><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
@@ -110,307 +297,353 @@
     </table>
   </div>
 
-  <!-- Clasificación de Pilotos -->
-  <div class="section">
-    <h2>🏎️ Clasificación de Pilotos</h2>
+  
+  <div id="pilotos" class="section">
+    <h2>Clasificación de Pilotos</h2>
     <table>
       <thead>
         <tr>
           <th>Piloto</th>
-          <th>Australia</th><th>China</th><th>Japón</th><th>Baréin</th><th>Arabia Saudí</th><th>Miami</th>
+          <th>Total</th><th>Australia</th><th>China</th><th>Japón</th><th>Baréin</th><th>Arabia Saudí</th><th>Miami</th>
           <th>Imola</th><th>Mónaco</th><th>España</th><th>Canadá</th><th>Austria</th><th>Gran Bretaña</th>
           <th>Bélgica</th><th>Hungría</th><th>Países Bajos</th><th>Italia</th><th>Azerbaiyán</th><th>Singapur</th>
           <th>Estados Unidos</th><th>México</th><th>Brasil</th><th>Las Vegas</th><th>Catar</th><th>Abu Dhabi</th>
-          <th>Total</th>
+          
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Pierre Gasly (Alpine)</td>
-          <td>0</td><td>0</td>
-          <td>0</td><td>4</td><td>-3</td><td></td><td></td><td></td>
+          <th>1</th>
+          <td>0</td><td>0</td><td>0</td><td>4</td><td>-3</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>1</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Jack Doohan (Alpine)</td>
-          <td>-3</td><td>0</td>
-          <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>-3</th>
+          <td>-3</td><td>0</td><td>0</td><td>0</td0><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>-3</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Fernando Alonso (Aston Martin)</td>
-          <td>-3</td><td>-3</td>
-          <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>-6</th>
+          <td>-3</td><td>-3</td><td>0</td><td>0</td><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>-6</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Lance Stroll (Aston Martin)</td>
-          <td>5</td><td>2</td>
-          <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>7</th>
+          <td>5</td><td>2</td><td>0</td><td>0</td><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>7</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Charles Leclerc (Ferrari)</td>
-          <td>3</td><td>0</td>
-          <td>7</td><td>8</td><td>8</td><td></td><td></td><td></td>
+          <th>26</th>
+          <td>3</td><td>0</td><td>7</td><td>8</td><td>8</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>26</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Lewis Hamilton (Ferrari)</td>
-          <td>1</td><td>6,5</td>
-          <td>4</td><td>6</td><td>4</td><td></td><td></td><td></td>
+          <th>21,5</th>
+          <td>1</td><td>6,5</td><td>4</td><td>6</td><td>4</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>21,5</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Esteban Ocon (Haas)</td>
-          <td>0</td><td>6</td>
-          <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>6</th>
+          <td>0</td><td>6</td><td>0</td><td>0</td><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>6</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Ollie Bearman (Haas)</td>
-          <td>0</td><td>3</td>
-          <td>1</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>4</th>
+          <td>0</td><td>3</td><td>1</td><td>0</td><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>4</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Lando Norris (McLaren)</td>
-          <td>14</td><td>14,5</td>
-          <td>11</td><td>8</td><td>8</td><td></td><td></td><td></td>
+          <th>55,5</th>
+          <td>14</td><td>14,5</td><td>11</td><td>8</td><td>8</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>55,5</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
           
         </tr>
         <tr>
           <td>Oscar Piastri (McLaren)</td>
-          <td>4</td><td>18</td>
-          <td>9</td><td>14</td><td>12</td><td></td><td></td><td></td>
+          <th>57</th>
+          <td>4</td><td>18</td><td>9</td><td>14</td><td>12</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>57</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>George Russell (Mercedes)</td>
-          <td>8</td><td>14</td>
-          <td>6</td><td>11</td><td>7</td><td></td><td></td><td></td>
+          <th>46</th>
+          <td>8</td><td>14</td><td>6</td><td>11</td><td>7</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>46</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>Kimi Antonelli (Mercedes)</td>
-          <td>7</td><td>7,5</td>
-          <td>6</td><td>0</td><td>5</td><td></td><td></td><td></td>
+          <th>25,5</th>
+          <td>7</td><td>7,5</td><td>6</td><td>0</td><td>5</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>25,5</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>Liam Lawson (Racing Bulls)</td>
-          <td>-3</td><td>0</td>
-          <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>-3</th>
+          <td>-3</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>-3</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
         </tr>
         <tr>
           <td>Isack Hadjar (Racing Bulls)</td>
-          <td>-3</td><td>0</td>
-          <td>3</td><td>0</td><td>1</td><td></td><td></td><td></td>
+          <th>1</th>
+          <td>-3</td><td>0</td><td>3</td><td>0</td><td>1</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>1</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>Max Verstappen (Red Bull)</td>
-          <td>10</td><td>11</td>
-          <td>13</td><td>5</td><td>12</td><td></td><td></td><td></td>
+          <th>51</th>
+          <td>10</td><td>11</td><td>13</td><td>5</td><td>12</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>51</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
         </tr>
         <tr>
           <td>Yuki Tsunoda (Red Bull)</td>
-          <td>0</td><td>0</td>
-          <td>0</td><td>2</td><td>-3</td><td></td><td></td><td></td>
+          <th>-1</th>
+          <td>0</td><td>0</td><td>0</td><td>2</td><td>-3</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>-1</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>Nico Hülkenberg (Sauber)</td>
-          <td>4</td><td>0</td>
-          <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>4</th><td></td>
+          <td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>4</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>Gabriel Bortoleto (Sauber)</td>
-          <td>-3</td><td>0</td>
-          <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
+          <th>-3</th>
+          <td>-3</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>-3</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>Carlos Sainz (Williams)</td>
-          <td>-3</td><td>1</td>
-          <td>0</td><td>-3</td><td>3</td><td></td><td></td><td></td>
+          <th>-2</th>
+          <td>-3</td><td>1</td><td>0</td><td>-3</td><td>3</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>-2</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
         <tr>
           <td>Alexander Albon (Williams)</td>
-          <td>6</td><td>4</td>
-          <td>2</td><td>0</td><td>2</td><td></td><td></td><td></td>
+          <th>14</th>
+          <td>6</td><td>4</td><td>2</td><td>0</td><td>2</td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
           <td></td><td></td><td></td><td></td><td></td><td></td>
-          <td></td><td></td><td></td><td></td><td></td><td>14</td>
+          <td></td><td></td><td></td><td></td><td></td><td></td>
 
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="section">
+  <div id="equipos" class="section">
+    <h2>Clasificación de Equipos</h2>
     <table>
-    <thead>
+      <thead>
+        <tr>
+          <th>Equipo</th>
+          <th>Total</th><th>Australia</th><th>China</th><th>Japón</th><th>Baréin</th><th>Arabia Saudí</th><th>Miami</th>
+          <th>Imola</th><th>Mónaco</th><th>España</th><th>Canadá</th><th>Austria</th><th>Gran Bretaña</th>
+          <th>Bélgica</th><th>Hungría</th><th>Países Bajos</th><th>Italia</th><th>Azerbaiyán</th><th>Singapur</th>
+          <th>Estados Unidos</th><th>México</th><th>Brasil</th><th>Las Vegas</th><th>Catar</th><th>Abu Dhabi</th>
+          
+        </tr>
+      </thead>
+      <tbody>
       <tr>
-        <th>Equipo</th>
-        <th>Australia</th><th>China</th><th>Japón</th><th>Baréin</th><th>Arabia Saudí</th><th>Miami</th>
-        <th>Imola</th><th>Mónaco</th><th>España</th><th>Canadá</th><th>Austria</th><th>Gran Bretaña</th>
-        <th>Bélgica</th><th>Hungría</th><th>Países Bajos</th><th>Italia</th><th>Azerbaiyán</th><th>Singapur</th>
-        <th>Estados Unidos</th><th>México</th><th>Brasil</th><th>Las Vegas</th><th>Catar</th><th>Abu Dhabi</th>
-        <th>Total</th>
+        <td>Alpine</td>
+        <th>-5</th>
+        <td>-3</td><td>0</td><td>0</td><td>1</td><td>-3</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
       </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>Alpine</td>
-      <td>-3</td><td>0</td>
-      <td>0</td><td>1</td><td>-3</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>-5</td>
+      <tr>
+        <td>Aston Martin</td>
+        <th>-4</th>
+        <td>-2</td><td>-2</td><td>0</td><td>0</td><td>0</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
+      </tr>
+      <tr>
+        <td>Ferrari</td>
+        <th>17,5</th>
+        <td>2</td><td>3,5</td><td>3</td><td>5</td><td>4</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Haas</td>
+        <th>4</th>
+        <td>0</td><td>3</td><td>1</td><td>0</td><td>0</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
+      </tr>
+      <tr>
+        <td>McLaren</td>
+        <th>55</th>
+        <td>11</td><td>15</td><td>9</td><td>11</td><td>9</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Mercedes</td>
+        <th>36</th>
+        <td>5</td><td>8</td><td>5</td><td>4</td><td>5</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
+      </tr>
+      <tr>
+        <td>Racing Bulls</td>
+        <th>-4</th>
+        <td>-6</td><td>0</td><td>1</td><td>0</td><td>1</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
+      </tr>
+      <tr>
+        <td>Red Bull</td>
+        <th>20</th>
+        <td>4</td><td>4</td><td>7</td><td>2</td><td>3</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
+      </tr>
+      <tr>
+        <td>Sauber</td>
+        <th>-2</th>
+        <td>-2</td><td>0</td><td>0</td><td>0</td><td>0</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
+      </tr>
+      <tr>
+        <td>Williams</td>
+        <th>1</th>
+        <td>-1</td><td>2</td><td>1</td><td>-3</td><td>2</td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td>
+  
+      </tr>
+    </tbody>
+  </table>
+  </div>
 
-    </tr>
-    <tr>
-      <td>Aston Martin</td>
-      <td>-2</td><td>-2</td>
-      <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>-4</td>
-
-    </tr>
-    <tr>
-      <td>Ferrari</td>
-      <td>2</td><td>3,5</td>
-      <td>3</td><td>5</td><td>4</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>17,5</td>
-    </tr>
-    <tr>
-      <td>Haas</td>
-      <td>0</td><td>3</td>
-      <td>1</td><td>0</td><td>0</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>4</td>
-
-    </tr>
-    <tr>
-      <td>McLaren</td>
-      <td>11</td><td>15</td>
-      <td>9</td><td>11</td><td>9</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>55</td>
-    </tr>
-    <tr>
-      <td>Mercedes</td>
-      <td>5</td><td>8</td>
-      <td>4</td><td>5</td><td>4</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>36</td>
-
-    </tr>
-    <tr>
-      <td>Racing Bulls</td>
-      <td>-6</td><td>0</td>
-      <td>1</td><td>0</td><td>1</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>-4</td>
-
-    </tr>
-    <tr>
-      <td>Red Bull</td>
-      <td>4</td><td>4</td>
-      <td>7</td><td>2</td><td>3</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>20</td>
-
-    </tr>
-    <tr>
-      <td>Sauber</td>
-      <td>-2</td><td>0</td>
-      <td>0</td><td>0</td><td>0</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>-2</td>
-
-    </tr>
-    <tr>
-      <td>Williams</td>
-      <td>-1</td><td>2</td>
-      <td>1</td><td>-3</td><td>2</td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td><td></td><td></td><td></td><td></td><td>1</td>
-
-    </tr>
-  </tbody>
-</table>
-</div>
-
+  <!-- Normas del Fantasy -->
+  <div id="normas" class="section rules">
+    <h2>📜 Normas del Fantasy F1</h2>
+    <ul>
+      <li>📅 Cada carrera se puntúa una vez finalizado el GP, usando resultados oficiales.</li>
+      <li>🏎️ Cada piloto puede sumar o restar puntos según su rendimiento.</li>
+      <li>👥 Cada jugador elige un equipo de dos pilotos y una escudería antes de cada GP.</li>
+      <li>💡 Las puntuaciones se basan en: 
+        Pilotos: <br>
+          Los 3 primeros pilotos en clasificación sumarán 3, 2 y 1 puntos respectivamente. <br>
+          Los 10 primeros pilotos en carrera sumarán 10, 9, 8, 7, 6, 5, 4, 3, 2 y 1 puntos. <br>
+          La vuelta rápida suma 1 punto. <br>
+          Si un piloto no acaba la carrera por cualquier razón, restará 3 puntos. <br>
+          Si hay carrera sprint, todas las puntuaciones se verán reducidas a la mitad en todos los ámbitos. <br>
+        Constructores: <br>
+          Si un piloto de dicha escudería queda en el top10, suma 1 punto. <br>
+          Si  queda en el top5, suma 2 puntos. <br>
+          Si queda en el top3, 3 puntos. <br>
+          Si gana la carrera, suma 4 puntos. <br>
+          Si abandona restará 3. <br>
+          La vuelta rápida suma 1 punto. <br>
+          Si hay carrera sprint, todas las puntuaciones se verán reducidas a la mitad en todos los ámbitos. <br>
+      </li>
+      <li>🔄 Puedes cambiar tu alineación antes de cada Gran Premio, hasta el cierre de clasificación, 
+              se tomará la última elección como referencia</li>
+      <li>🏆 Gana quien tenga más puntos al final de la temporada.</li>
+    </ul>
+  </div>
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      // Guarda la preferencia en localStorage
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+    }
+  
+    // Al cargar la página, aplica la preferencia guardada
+    window.onload = () => {
+      const savedMode = localStorage.getItem('darkMode');
+      if (savedMode === 'true') {
+        document.body.classList.add('dark-mode');
+      }
+    }
+  </script>
+  
 </body>
 </html>
