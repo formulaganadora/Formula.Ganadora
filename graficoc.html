@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gráfico de Precios - Fantasy F1</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #c00;
+    }
+
+    .chart-container {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>Evolución de Precios - Fantasy F1 2025</h1>
+  <div class="chart-container">
+    <canvas id="priceChart"></canvas>
+  </div>
+
+  <script>
+    const labels = ["Australia", "China", "Japón", "Baréin", "Arabia Saudí", "Miami", "Emilia-Romgna", "Mónaco", "España", "Canadá", "Austria", "Gran Bretaña", "Bélgica", "Hungría", "Países Bajos", "Italia", "Azerbaiyán", "Singapur", "Estados Unidos", "México", "Brasil", "Las Vegas", "Catar", "Abu Dhabi"];
+
+    const data = {
+      labels: labels,
+      datasets: [
+        {
+          label: "Alpine",
+          data: [11.4, 11.2, 11, 10.9, 10.4, 9.9],
+          borderColor: "#2673E2",
+          backgroundColor: "#2673E2",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Aston Martin",
+          data: [15.8, 15.2, 14.9, 14.6, 14.3, 13.9],
+          borderColor: "#006F62",
+          backgroundColor: "#006F62",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Ferrari",
+          data: [21.8, 22, 22, 22.7, 23, 22.8],
+          borderColor: "#DC0000",
+          backgroundColor: "#DC0000",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Haas",
+          data: [12.7, 12.9, 12.8, 12.5, 12.3, 11.7],
+          borderColor: "#B6BABD",
+          backgroundColor: "#B6BABD",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "McLaren",
+          data: [31.3, 33.6, 33.3, 33.8, 33.5, 36],
+          borderColor: "#FF8700",
+          backgroundColor: "#FF8700",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Mercedes",
+          data: [24.3, 25.4, 25.1, 25.1, 24.8, 25.9],
+          borderColor: "#00D2BE",
+          backgroundColor: "#00D2BE",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Racing Bulls",
+          data: [17, 16.7, 16.5, 16.2, 16, 15.3],
+          borderColor: "#2B4562",
+          backgroundColor: "#2B4562",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Red Bull Racing",
+          data: [26.5, 26.5, 27.7, 27.1, 26.8, 27.8],
+          borderColor: "#1E41FF",
+          backgroundColor: "#1E41FF",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Sauber",
+          data: [8.9, 8.7, 8.5, 8.3, 8.1, 7.7],
+          borderColor: "#52E252",
+          backgroundColor: "#52E252",
+          fill: false,
+          tension: 0.3
+        },
+        {
+          label: "Williams",
+          data: [17.3, 17.1, 16.8, 15.8, 15.6, 15.4],
+          borderColor: "#005AFF",
+          backgroundColor: "#005AFF",
+          fill: false,
+          tension: 0.3
+        },
+      ]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+          },
+          title: {
+            display: true,
+            text: 'Variación de precios por carrera'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: false,
+            title: {
+              display: true,
+              text: 'Valor (€ millones)'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Carrera'
+            }
+          }
+        }
+      },
+    };
+
+    const priceChart = new Chart(
+      document.getElementById('priceChart'),
+      config
+    );
+  </script>
+</body>
+</html>
