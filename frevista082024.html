@@ -1,66 +1,102 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprobación de la suscripción</title>
-    <script>
-        function verificarTexto() {
-            // Obtiene el valor del cuadro de texto
-            var texto = document.getElementById('codigo').value.trim();
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verificación de suscripción</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ff0000, #ff0000);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
-            // Define las palabras válidas
-            var palabrasValidas = ["AYOYO", "MAMAYA", "2Miki02", "javifg", "MAMÁ", "Blanqui", "LuciaM", "IsmaeL"];
+    .container {
+      background-color: rgb(236, 247, 180) ;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-            // Verifica si el texto ingresado es una de las palabras válidas
-            if (palabrasValidas.includes(texto)) {
-                // Redirige a la página revistas.html
-                window.location.href = "revista082024.html";
-            } else {
-                // Muestra una alerta si el texto no es válido
-                alert("Palabra incorrecta. Intenta de nuevo.");
-            }
-        }
-    </script>
-    <style>
-        body{
-            background-color: rgb(194, 102, 102);
-            text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-            color: aliceblue;
-        }
-        /* Estilos Responsive */
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 900px;
-            }
-            input, button {
-                width: 60%;
-            }
-        }
-        
-            @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-            .container {
-                width: 90%;
-            }
-            input, button {
-                width: 100%;
-            }
-        }
-        
-            @media (max-width: 480px) {
-        }
-    </style>
+    h1 {
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    label {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #000000;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #cc0000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+  <script>
+    function verificarTexto() {
+      const texto = document.getElementById('codigo').value.trim();
+      const palabrasValidas = [
+      "AYOYO", "MAMAYA", "2Miki02", "javifg", "MAMÁ", "Blanqui", "LuciaM", "IsmaeL"
+      ];
+
+      if (palabrasValidas.includes(texto)) {
+        window.location.href = "revista012025.html";
+      } else {
+        alert("❌ Palabra incorrecta. Intenta de nuevo.");
+      }
+    }
+  </script>
 </head>
 <body>
-    <h1>Formulario de Verificación</h1>
+  <div class="container">
+    <h1>Verificación de Suscripción</h1>
     <form onsubmit="event.preventDefault(); verificarTexto();">
-        <label for="codigo">Introduzca su contraseña:</label><br>
-        <input type="password" id="codigo" name="codigo" required><br><br>
-        <button type="submit">Enviar</button>
+      <label for="codigo">Introduce tu clave personal:</label>
+      <input type="password" id="codigo" name="codigo" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
     </form>
+  </div>
 </body>
 </html>
