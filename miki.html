@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Perfil de Miki R.</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    canvas {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Perfil de Miki R.</h1>
+  <p><strong>Puntos Totales:</strong> 25</p>
+
+  <h2>Gráfico de Puntos por Carrera</h2>
+  <canvas id="pointsChart"></canvas>
+
+  <script>
+    const ctx = document.getElementById('pointsChart').getContext('2d');
+    const pointsChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Australia', 'China', 'Japón', 'Baréin', 'Arabia Saudí', 'Miami', 'Emilia-Romgna', 'Mónaco', 'España', 'Canadá', 'Austria', 'Gran Bretaña', 'Bélgica', 'Hungría', 'Países Bajos', 'Italia', 'Azerbaiyán', 'Singapur', 'Estados Unidos', 'México', 'Brasil', 'Las Vegas', 'Catar', 'Abu Dhabi'],
+        datasets: [{
+          label: 'Puntos por Carrera',
+          data: [0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            color: '#000',
+            font: {
+              weight: 'bold'
+            },
+            formatter: function(value) {
+              return value > 0 ? value : '';
+            }
+          },
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 40
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  </script>
+</body>
+</html>

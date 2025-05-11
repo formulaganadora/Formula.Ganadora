@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Perfil de Lando Norris</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .stats {
+      margin-top: 20px;
+    }
+    canvas {
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Perfil de Lando Norris</h1>
+  <p><strong>Equipo:</strong> McLaren</p>
+  <p><strong>Puntos Totales:</strong> 73</p>
+
+  <div class="stats">
+    <h2>Puntos por Carrera</h2>
+    <ul>
+      <li>Australia: 14</li>
+      <li>China: 14.5</li>
+      <li>Japón: 11</li>
+      <li>Baréin: 8</li>
+      <li>Arabia Saudí: 8</li>
+      <li>Miami: 17.5</li>
+      <li>Imola: —</li>
+      <li>Mónaco: —</li>
+      <li>España: —</li>
+      <li>Canadá: —</li>
+      <li>Austria: —</li>
+      <li>Gran Bretaña: —</li>
+      <li>Bélgica: —</li>
+      <li>Hungría: —</li>
+      <li>Países Bajos: —</li>
+      <li>Italia: —</li>
+      <li>Azerbaiyán: —</li>
+      <li>Singapur: —</li>
+      <li>Estados Unidos: —</li>
+      <li>México: —</li>
+      <li>Brasil: —</li>
+      <li>Las Vegas: —</li>
+      <li>Catar: —</li>
+      <li>Abu Dhabi: —</li>
+    </ul>
+  </div>
+
+  <h2>Gráfico de Puntos por Carrera</h2>
+  <canvas id="pointsChart"></canvas>
+
+  <script>
+    const ctx = document.getElementById('pointsChart').getContext('2d');
+    const pointsChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Australia', 'China', 'Japón', 'Baréin', 'Arabia Saudí', 'Miami', 'Imola', 'Mónaco', 'España', 'Canadá', 'Austria', 'Gran Bretaña', 'Bélgica', 'Hungría', 'Países Bajos', 'Italia', 'Azerbaiyán', 'Singapur', 'Estados Unidos', 'México', 'Brasil', 'Las Vegas', 'Catar', 'Abu Dhabi'],
+        datasets: [{
+          label: 'Puntos por Carrera',
+          data: [14, 14.5, 11, 8, 8, 17.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 2,
+          fill: false,
+          tension: 0.1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
