@@ -1,148 +1,179 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title id="titulo">ventas</title>
-        <style>
-            body {
-                background-color: rgb(41, 196, 147);
-                background-size: 200px;
-                background-repeat: no-repeat;
-                color: rgb(0, 0, 0) ;
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ventas</title>
+    <style>
+        body {
+            background-color: rgb(41, 196, 147);
+            color: rgb(0, 0, 0);
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            border: 2px solid white;
+            background-color: rgb(255, 0, 0);
+            margin: 10px 20px;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        section:first-of-type {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 15px 20px;
+        }
+        section:last-of-type {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 10px 20px 40px;
+        }
+        article {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            max-width: 320px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        article img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+        h4 a {
+            color: white;
+            background-color: rgb(255, 0, 0);
+            text-decoration: none;
+            padding: 6px 12px;
+            display: inline-block;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        h4 a:hover {
+            background-color: rgb(200, 0, 0);
+        }
+        footer {
+            text-align: center;
+            margin: 20px 0;
+        }
+        footer a {
+            color: aliceblue;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            section:last-of-type {
+                flex-direction: column;
+                align-items: center;
             }
-            header{
-                border-style: solid;
-                border-color: rgb(255, 255, 255);
-                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-                margin: 10px 20px;
-                background-color: rgb(255, 0, 0);
+            article {
+                max-width: 90%;
             }
-            section {
-                display: flex;
-                justify-content: center; /* Centra los artículos horizontalmente */
-                flex-wrap: wrap; /* Permite que los artículos se muevan a la siguiente línea si es necesario */
+            article img {
+                max-width: 100%;
             }
-            article{
-                margin: 15px;
-                text-align: center;
-            }
-            #a {
-                color: rgb(255, 255, 255);
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            * {
-                text-align: center;
-            }
-            /* Estilos Responsive */
-            @media (min-width: 1024px) {
-            .container {
-                max-width: 900px;
-            }
-            input, button {
-                width: 60%;
-            }
-            }
-        
-            @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-            .container {
-                width: 90%;
-            }
-            input, button {
-                width: 100%;
-            }
-            }
-        
-            @media (max-width: 480px) {
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Ventas</h1>
-        </header>
-        <br>
-        <section> 
-            Aquí podrá ver los objetos que tenemos en venta y comprar alguno de ellos.
-        </section>
-        <section>
-            <article>
-                <img src="img/Impresión 3D/jeddah 1.png" 300px>
-                <img src="img/Impresión 3D/jeddah 2.png" 300px>
-                <img src="img/Impresión 3D/jeddah 3.png" 300px>         
-                <h4><a id="a" href="https://forms.gle/7Nxxne7RHfq4zq576">Circuito de Jeddah (15x19cm) - 12€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/interlagos 1.png" width="300px">
-                <img src="img/Impresión 3D/interlagos 2.png" width="300px">
-                <img src="img/Impresión 3D/interlagos 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/kjcW87cGDyNCjyXW7">Circuito de Interlagos (10x15cm) - 11€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/bahrain 1.png" width="300px">
-                <img src="img/Impresión 3D/bahrain 2.png" width="300px">
-                <img src="img/Impresión 3D/bahrain 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/UeKRianW9GM6Qbic9">Circuito de Baréin (12x19cm) - 11,5€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/imola 1.png" width="300px">
-                <img src="img/Impresión 3D/imola 2.png" width="300px">
-                <img src="img/Impresión 3D/imola 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/jBJhx4FfeSzy5ozh9">Circuito de Imola (13x23cm) - 15€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/canada 1.png" width="300px">
-                <img src="img/Impresión 3D/canada 2.png" width="300px">
-                <img src="img/Impresión 3D/canada 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/oUHAyxPsQ7cnF1wY9">Circuito de Canadá (8x19cm) - 11€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/austria 1.png" width="300px">
-                <img src="img/Impresión 3D/austria 2.png" width="300px">
-                <img src="img/Impresión 3D/austria 3.png" width="300px">     
-                <h4><a id="a" href="https://forms.gle/XiNwyTyUmGmb3ctz6">Circuito de Austria (11x19cm) - 11,5€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/imola 1.png" width="300px">
-                <img src="img/Impresión 3D/imola 2.png" width="300px">
-                <img src="img/Impresión 3D/imola 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/4dZHh8HhqFowLJT9A">Circuito de Australia (11x21cm) - 13€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/zandvoort 1.png" width="300px">
-                <img src="img/Impresión 3D/zandvoort 2.png" width="300px">
-                <img src="img/Impresión 3D/zandvoort 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/KRj2oiDQJJ48Ay6BA">Circuito de Zandvoort (12x12cm) - 10,5€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/barcelona 1.png" width="300px">
-                <img src="img/Impresión 3D/barcelona 2.png" width="300px">
-                <img src="img/Impresión 3D/barcelona 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/GtEGSXUpuaDqPc1L8">Circuito de Barcelona (10x33cm) - 16€</a></h4>
-           </article>
-           <article>
-                <img src="img/Impresión 3D/hungaroring 1.png" width="300px">
-                <img src="img/Impresión 3D/hungaroring 2.png" width="300px">
-                <img src="img/Impresión 3D/hungaroring 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/jF3Ns8BJUYGnLMqaA">Circuito de Hungaroring (13x14cm) - 12€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/pricard 1.png" width="300px">
-                <img src="img/Impresión 3D/pricard 2.png" width="300px">
-                <img src="img/Impresión 3D/pricard 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/YNAmmcZNb1JfwHMi7">Circuito de Paul Ricard (11x25cm) - 14€</a></h4>
-            </article>
-            <article>
-                <img src="img/Impresión 3D/silverstone 1.png" width="300px">
-                <img src="img/Impresión 3D/silverstone 2.png" width="300px">
-                <img src="img/Impresión 3D/silverstone 3.png" width="300px">        
-                <h4><a id="a" href="https://forms.gle/USyg4xhp88n5nkjc9">Circuito de Silverstone (13x20cm) - 14€</a></h4>
-            </article>
-        </section>
-        <footer>
-            <a style="color: aliceblue;" href="index.html">Volver a la página de inicio</a>
-        </footer>
-    </body>
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ventas</h1>
+    </header>
+
+    <section>
+        Aquí podrá ver los objetos que tenemos en venta y comprar alguno de ellos.
+    </section>
+
+    <section>
+        <article>
+            <img src="img/Impresión 3D/jeddah 1.png" alt="Circuito de Jeddah 1" />
+            <img src="img/Impresión 3D/jeddah 2.png" alt="Circuito de Jeddah 2" />
+            <img src="img/Impresión 3D/jeddah 3.png" alt="Circuito de Jeddah 3" />
+            <h4><a href="https://forms.gle/7Nxxne7RHfq4zq576">Circuito de Jeddah (15x19cm) - 12€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/interlagos 1.png" alt="Circuito de Interlagos 1" />
+            <img src="img/Impresión 3D/interlagos 2.png" alt="Circuito de Interlagos 2" />
+            <img src="img/Impresión 3D/interlagos 3.png" alt="Circuito de Interlagos 3" />
+            <h4><a href="https://forms.gle/kjcW87cGDyNCjyXW7">Circuito de Interlagos (10x15cm) - 11€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/bahrain 1.png" alt="Circuito de Baréin 1" />
+            <img src="img/Impresión 3D/bahrain 2.png" alt="Circuito de Baréin 2" />
+            <img src="img/Impresión 3D/bahrain 3.png" alt="Circuito de Baréin 3" />
+            <h4><a href="https://forms.gle/UeKRianW9GM6Qbic9">Circuito de Baréin (12x19cm) - 11,5€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/imola 1.png" alt="Circuito de Imola 1" />
+            <img src="img/Impresión 3D/imola 2.png" alt="Circuito de Imola 2" />
+            <img src="img/Impresión 3D/imola 3.png" alt="Circuito de Imola 3" />
+            <h4><a href="https://forms.gle/jBJhx4FfeSzy5ozh9">Circuito de Imola (13x23cm) - 15€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/canada 1.png" alt="Circuito de Canadá 1" />
+            <img src="img/Impresión 3D/canada 2.png" alt="Circuito de Canadá 2" />
+            <img src="img/Impresión 3D/canada 3.png" alt="Circuito de Canadá 3" />
+            <h4><a href="https://forms.gle/oUHAyxPsQ7cnF1wY9">Circuito de Canadá (8x19cm) - 11€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/austria 1.png" alt="Circuito de Austria 1" />
+            <img src="img/Impresión 3D/austria 2.png" alt="Circuito de Austria 2" />
+            <img src="img/Impresión 3D/austria 3.png" alt="Circuito de Austria 3" />
+            <h4><a href="https://forms.gle/XiNwyTyUmGmb3ctz6">Circuito de Austria (11x19cm) - 11,5€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/imola 1.png" alt="Circuito de Australia 1" />
+            <img src="img/Impresión 3D/imola 2.png" alt="Circuito de Australia 2" />
+            <img src="img/Impresión 3D/imola 3.png" alt="Circuito de Australia 3" />
+            <h4><a href="https://forms.gle/4dZHh8HhqFowLJT9A">Circuito de Australia (11x21cm) - 13€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/zandvoort 1.png" alt="Circuito de Zandvoort 1" />
+            <img src="img/Impresión 3D/zandvoort 2.png" alt="Circuito de Zandvoort 2" />
+            <img src="img/Impresión 3D/zandvoort 3.png" alt="Circuito de Zandvoort 3" />
+            <h4><a href="https://forms.gle/KRj2oiDQJJ48Ay6BA">Circuito de Zandvoort (12x12cm) - 10,5€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/barcelona 1.png" alt="Circuito de Barcelona 1" />
+            <img src="img/Impresión 3D/barcelona 2.png" alt="Circuito de Barcelona 2" />
+            <img src="img/Impresión 3D/barcelona 3.png" alt="Circuito de Barcelona 3" />
+            <h4><a href="https://forms.gle/GtEGSXUpuaDqPc1L8">Circuito de Barcelona (10x33cm) - 16€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/hungaroring 1.png" alt="Circuito de Hungaroring 1" />
+            <img src="img/Impresión 3D/hungaroring 2.png" alt="Circuito de Hungaroring 2" />
+            <img src="img/Impresión 3D/hungaroring 3.png" alt="Circuito de Hungaroring 3" />
+            <h4><a href="https://forms.gle/jF3Ns8BJUYGnLMqaA">Circuito de Hungaroring (13x14cm) - 12€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/pricard 1.png" alt="Circuito de Paul Ricard 1" />
+            <img src="img/Impresión 3D/pricard 2.png" alt="Circuito de Paul Ricard 2" />
+            <img src="img/Impresión 3D/pricard 3.png" alt="Circuito de Paul Ricard 3" />
+            <h4><a href="https://forms.gle/YNAmmcZNb1JfwHMi7">Circuito de Paul Ricard (11x25cm) - 14€</a></h4>
+        </article>
+        <article>
+            <img src="img/Impresión 3D/silverstone 1.png" alt="Circuito de Silverstone 1" />
+            <img src="img/Impresión 3D/silverstone 2.png" alt="Circuito de Silverstone 2" />
+            <img src="img/Impresión 3D/silverstone 3.png" alt="Circuito de Silverstone 3" />
+            <h4><a href="https://forms.gle/USyg4xhp88n5nkjc9">Circuito de Silverstone (13x20cm) - 14€</a></h4>
+        </article>
+    </section>
+
+    <footer>
+        <a href="index.html">Volver a la página de inicio</a>
+    </footer>
+</body>
 </html>
