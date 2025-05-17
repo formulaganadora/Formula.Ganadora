@@ -1,179 +1,271 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Ventas</title>
-    <style>
-        body {
-            background-color: rgb(41, 196, 147);
-            color: rgb(0, 0, 0);
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            border: 2px solid white;
-            background-color: rgb(255, 0, 0);
-            margin: 10px 20px;
-            padding: 10px;
-            text-align: center;
-            color: white;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-        section:first-of-type {
-            text-align: center;
-            font-size: 1.2rem;
-            margin: 15px 20px;
-        }
-        section:last-of-type {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 10px 20px 40px;
-        }
-        article {
-            background: white;
-            border-radius: 8px;
-            padding: 10px;
-            max-width: 320px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-        article img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin-bottom: 5px;
-            border-radius: 5px;
-        }
-        h4 a {
-            color: white;
-            background-color: rgb(255, 0, 0);
-            text-decoration: none;
-            padding: 6px 12px;
-            display: inline-block;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        h4 a:hover {
-            background-color: rgb(200, 0, 0);
-        }
-        footer {
-            text-align: center;
-            margin: 20px 0;
-        }
-        footer a {
-            color: aliceblue;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        /* Responsive */
-        @media (max-width: 768px) {
-            section:last-of-type {
-                flex-direction: column;
-                align-items: center;
-            }
-            article {
-                max-width: 90%;
-            }
-            article img {
-                max-width: 100%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Ventas - Fórmula Ganadora</title>
+  <style>
+    :root {
+      --bg-color: #2c2c2c;
+      --text-color: white;
+      --card-bg: #1e1e1e;
+      --accent: #ff3c3c;
+      --link-color: #ffcc00;
+    }
+
+    body.light {
+      --bg-color: #f2f2f2;
+      --text-color: #111;
+      --card-bg: rgb(249, 174, 174);
+      --accent: #e63946;
+      --link-color: #000000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      background-color: var(--accent);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: white;
+    }
+
+    .mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: none;
+      color: var(--text-color);
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    nav {
+      background-color: var(--card-bg);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+      gap: 10px;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: var(--accent);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8em;
+      margin: 40px 0 20px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      width: 260px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card h4 {
+      color: var(--link-color);
+      padding: 10px;
+    }
+
+    footer {
+      margin-top: 40px;
+      background-color: var(--card-bg);
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Ventas</h1>
-    </header>
+  <button class="mode-toggle" onclick="toggleMode()">🌙 Modo Oscuro / Claro ☀️</button>
 
-    <section>
-        Aquí podrá ver los objetos que tenemos en venta y comprar alguno de ellos.
+  <header>
+    <h1>Ventas - Fórmula Ganadora</h1>
+  </header>
+
+  <nav>
+    <a href="#posters">Posters</a>
+    <a href="#circuitos">Circuitos</a>
+    <a href="#coches">Coches a Escala</a>
+    <a href="#llaveros">Llaveros</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- Posters -->
+    <section id="posters">
+      <h2 class="section-title">Posters</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="img/posters/poster1.jpg" alt="Poster 1" />
+          <h4>Poster McLaren 2025</h4>
+        </div>
+        <div class="card">
+          <img src="img/posters/poster2.jpg" alt="Poster 2" />
+          <h4>Poster Ferrari Retro</h4>
+        </div>
+      </div>
     </section>
 
-    <section>
-        <article>
-            <img src="img/Impresión 3D/jeddah 1.png" alt="Circuito de Jeddah 1" />
-            <img src="img/Impresión 3D/jeddah 2.png" alt="Circuito de Jeddah 2" />
-            <img src="img/Impresión 3D/jeddah 3.png" alt="Circuito de Jeddah 3" />
-            <h4><a href="https://forms.gle/7Nxxne7RHfq4zq576">Circuito de Jeddah (15x19cm) - 12€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/interlagos 1.png" alt="Circuito de Interlagos 1" />
-            <img src="img/Impresión 3D/interlagos 2.png" alt="Circuito de Interlagos 2" />
-            <img src="img/Impresión 3D/interlagos 3.png" alt="Circuito de Interlagos 3" />
-            <h4><a href="https://forms.gle/kjcW87cGDyNCjyXW7">Circuito de Interlagos (10x15cm) - 11€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/bahrain 1.png" alt="Circuito de Baréin 1" />
-            <img src="img/Impresión 3D/bahrain 2.png" alt="Circuito de Baréin 2" />
-            <img src="img/Impresión 3D/bahrain 3.png" alt="Circuito de Baréin 3" />
-            <h4><a href="https://forms.gle/UeKRianW9GM6Qbic9">Circuito de Baréin (12x19cm) - 11,5€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/imola 1.png" alt="Circuito de Imola 1" />
-            <img src="img/Impresión 3D/imola 2.png" alt="Circuito de Imola 2" />
-            <img src="img/Impresión 3D/imola 3.png" alt="Circuito de Imola 3" />
-            <h4><a href="https://forms.gle/jBJhx4FfeSzy5ozh9">Circuito de Imola (13x23cm) - 15€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/canada 1.png" alt="Circuito de Canadá 1" />
-            <img src="img/Impresión 3D/canada 2.png" alt="Circuito de Canadá 2" />
-            <img src="img/Impresión 3D/canada 3.png" alt="Circuito de Canadá 3" />
-            <h4><a href="https://forms.gle/oUHAyxPsQ7cnF1wY9">Circuito de Canadá (8x19cm) - 11€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/austria 1.png" alt="Circuito de Austria 1" />
-            <img src="img/Impresión 3D/austria 2.png" alt="Circuito de Austria 2" />
-            <img src="img/Impresión 3D/austria 3.png" alt="Circuito de Austria 3" />
-            <h4><a href="https://forms.gle/XiNwyTyUmGmb3ctz6">Circuito de Austria (11x19cm) - 11,5€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/imola 1.png" alt="Circuito de Australia 1" />
-            <img src="img/Impresión 3D/imola 2.png" alt="Circuito de Australia 2" />
-            <img src="img/Impresión 3D/imola 3.png" alt="Circuito de Australia 3" />
-            <h4><a href="https://forms.gle/4dZHh8HhqFowLJT9A">Circuito de Australia (11x21cm) - 13€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/zandvoort 1.png" alt="Circuito de Zandvoort 1" />
-            <img src="img/Impresión 3D/zandvoort 2.png" alt="Circuito de Zandvoort 2" />
-            <img src="img/Impresión 3D/zandvoort 3.png" alt="Circuito de Zandvoort 3" />
-            <h4><a href="https://forms.gle/KRj2oiDQJJ48Ay6BA">Circuito de Zandvoort (12x12cm) - 10,5€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/barcelona 1.png" alt="Circuito de Barcelona 1" />
-            <img src="img/Impresión 3D/barcelona 2.png" alt="Circuito de Barcelona 2" />
-            <img src="img/Impresión 3D/barcelona 3.png" alt="Circuito de Barcelona 3" />
-            <h4><a href="https://forms.gle/GtEGSXUpuaDqPc1L8">Circuito de Barcelona (10x33cm) - 16€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/hungaroring 1.png" alt="Circuito de Hungaroring 1" />
-            <img src="img/Impresión 3D/hungaroring 2.png" alt="Circuito de Hungaroring 2" />
-            <img src="img/Impresión 3D/hungaroring 3.png" alt="Circuito de Hungaroring 3" />
-            <h4><a href="https://forms.gle/jF3Ns8BJUYGnLMqaA">Circuito de Hungaroring (13x14cm) - 12€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/pricard 1.png" alt="Circuito de Paul Ricard 1" />
-            <img src="img/Impresión 3D/pricard 2.png" alt="Circuito de Paul Ricard 2" />
-            <img src="img/Impresión 3D/pricard 3.png" alt="Circuito de Paul Ricard 3" />
-            <h4><a href="https://forms.gle/YNAmmcZNb1JfwHMi7">Circuito de Paul Ricard (11x25cm) - 14€</a></h4>
-        </article>
-        <article>
-            <img src="img/Impresión 3D/silverstone 1.png" alt="Circuito de Silverstone 1" />
-            <img src="img/Impresión 3D/silverstone 2.png" alt="Circuito de Silverstone 2" />
-            <img src="img/Impresión 3D/silverstone 3.png" alt="Circuito de Silverstone 3" />
-            <h4><a href="https://forms.gle/USyg4xhp88n5nkjc9">Circuito de Silverstone (13x20cm) - 14€</a></h4>
-        </article>
+    <!-- Circuitos -->
+    <section id="circuitos">
+      <h2 class="section-title">Circuitos</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="img/circuitos/australia.jpg" alt="Australia" />
+          <h4>Australia</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/azerbaiyan.jpg" alt="Azerbaiyán" />
+          <h4>Azerbaiyán</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/bahrein.jpg" alt="Baréin" />
+          <h4>Baréin</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/belgica.jpg" alt="Bélgica" />
+          <h4>Bélgica</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/holanda.jpg" alt="Países Bajos" />
+          <h4>Países Bajos</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/monaco.jpg" alt="Mónaco" />
+          <h4>Mónaco</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/japon.jpg" alt="Japón" />
+          <h4>Japón</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/usa.jpg" alt="Estados Unidos" />
+          <h4>Estados Unidos</h4>
+        </div>
+        <div class="card">
+          <img src="img/circuitos/espana.jpg" alt="España" />
+          <h4>España</h4>
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <a href="index.html">Volver a la página de inicio</a>
-    </footer>
+    <!-- Coches a Escala -->
+    <section id="coches">
+      <h2 class="section-title">Coches a Escala</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="img/coches/mclaren.jpg" alt="Coche McLaren" />
+          <h4>McLaren MCL60 1:43</h4>
+        </div>
+        <div class="card">
+          <img src="img/coches/redbull.jpg" alt="Coche Red Bull" />
+          <h4>Red Bull RB20 1:43</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llaveros -->
+    <section id="llaveros">
+      <h2 class="section-title">Llaveros</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="img/llaveros/mercedes.jpg" alt="Llavero Mercedes" />
+          <h4>Llavero Mercedes-AMG</h4>
+        </div>
+        <div class="card">
+          <img src="img/llaveros/ferrari.jpg" alt="Llavero Ferrari" />
+          <h4>Llavero Ferrari F1</h4>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    Para pedidos o más información, contáctanos en
+    <a href="mailto:formulaganadora.info@gmail.com">formulaganadora.info@gmail.com</a>
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light");
+      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    }
+
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    };
+  </script>
 </body>
 </html>
