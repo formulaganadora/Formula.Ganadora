@@ -54,7 +54,7 @@
       padding: 10px 15px;
       cursor: pointer;
       border-radius: 8px;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
 
     .intro {
@@ -130,6 +130,12 @@
         right: 10px;
       }
     }
+    .revista-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
   </style>
 </head>
 <body>
@@ -209,24 +215,79 @@
       <img src="img/REVISTA Abril 2025/por.png" alt="Revista Abril 2025">
       <h4><a href="frevista042025.html">Abril</a></h4>
     </div>
+    <div class="card">
+      <img src="img/REVISTA Mayo 2025/por.png" alt="Revista Abril 2025">
+      <h4><a href="frevista052025.html">Mayo</a></h4>
+    </div>
   </section>
 
   <footer>
     <a href="index.html">← Volver a la página de inicio</a>
   </footer>
 
-  <script>
-    function toggleMode() {
-      document.body.classList.toggle("light");
-      localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-    }
+  <script type="module">
+  import { auth, db } from './firebase.js';
+  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+  import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
-    window.onload = () => {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "light") {
-        document.body.classList.add("light");
+  const todasLasRevistas = [
+    { id: "febrero2024", titulo: "Febrero", imagen: "img/REVISTA Febrero 2024/portadaf.png", enlace: "frevista022024.html" },
+    { id: "marzo2024", titulo: "Marzo", imagen: "img/REVISTA Marzo 2024/portadamarzo.png", enlace: "frevista032024.html" },
+    { id: "abril2024", titulo: "Abril", imagen: "img/Revista Abril 2024/portada.png", enlace: "frevista042024.html" },
+    // Agrega más aquí con el mismo formato...
+  ];
+
+  const contenedorCompradas = document.getElementById("compradas");
+  const contenedorNoCompradas = document.getElementById("no-compradas");
+
+  function crearCard(revista, comprada, uid) {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = 
+      <img src="${revista.imagen}" alt="Portada ${revista.titulo}">
+      <h4>${comprada ? <a href="${revista.enlace}">${revista.titulo}</a> : revista.titulo}</h4>
+      ${!comprada ? <button onclick="comprarRevista('${revista.id}', '${uid}')">Comprar</button> : ""}
+    ;
+    return div;
+  }
+
+  window.comprarRevista = async (revistaId, uid) => {
+    const userRef = doc(db, "usuarios", uid);
+    await updateDoc(userRef, {
+      revistas: arrayUnion(revistaId)
+    });
+    location.reload(); // Recarga para mostrar la revista en “compradas”
+  };
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const uid = user.uid;
+      const userRef = doc(db, "usuarios", uid);
+      const userSnap = await getDoc(userRef);
+
+      let revistasCompradas = [];
+
+      if (userSnap.exists()) {
+        revistasCompradas = userSnap.data().revistas || [];
+      } else {
+        // Crea doc vacío si no existe
+        await setDoc(userRef, { revistas: [] });
       }
-    };
-  </script>
+
+      todasLasRevistas.forEach(r => {
+        const esComprada = revistasCompradas.includes(r.id);
+        const card = crearCard(r, esComprada, uid);
+        if (esComprada) {
+          contenedorCompradas.appendChild(card);
+        } else {
+          contenedorNoCompradas.appendChild(card);
+        }
+      });
+
+    } else {
+      window.location.href = "login.html";
+    }
+  });
+</script>
 </body>
 </html>
