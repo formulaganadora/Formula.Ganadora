@@ -190,31 +190,28 @@
     }
 
     .iframe-container {
-    position: relative;
-    width: 100%;
-    /* Altura base para escritorio */
-    height: 500px;
-  }
-
-  .iframe-container iframe {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* Tablet */
-  @media (max-width: 1024px) {
-    .iframe-container {
-      height: 400px;
+      width: 100%;
+      height: 600px;
     }
-  }
 
-  /* Móvil */
-  @media (max-width: 768px) {
-    .iframe-container {
-      height: 300px;
+    .iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .iframe-container {
+        height: 450px;
+      }
+    }
+
+    /* Móvil */
+    @media (max-width: 768px) {
+      .iframe-container {
+        height: 300px;
     }
   }
 
@@ -392,7 +389,7 @@
           <td></td><td></td><td></td><td></td><td></td><td></td>
         </tr>
         <tr>
-          <td>Charles Leclerc (Ferrari)</td>
+          <td><a href="https://formulaganadora.github.io/Formula.Ganadora/leclerc.html" style="color: #000000;">Charles Leclerc</a></td>
           <th>52,5</th>
           <td>3</td><td>0</td><td>7</td><td>8</td><td>8</td><td>2,5</td>
           <td>5</td><td>9</td><td>8</td><td></td><td></td><td></td>
@@ -400,7 +397,7 @@
           <td></td><td></td><td></td><td></td><td></td><td></td>          
         </tr>
         <tr>
-          <td>Lewis Hamilton (Ferrari)</td>
+          <td><a href="https://formulaganadora.github.io/Formula.Ganadora/hamilton.html" style="color: #000000;">Lewis Hamilton</a></td>
           <th>46,5</th>
           <td>1</td><td>6,5</td><td>4</td><td>6</td><td>4</td><td>7</td>
           <td>7</td><td>6</td><td>5</td><td></td><td></td><td></td>
@@ -532,7 +529,7 @@
   </div>
 
   <div class="iframe-container">
-    <iframe src="grafico.html" allowfullscreen></iframe>
+    <iframe src="grafico.html"></iframe>
   </div>
 
   <div id="equipos" class="section">
@@ -634,7 +631,7 @@
   </table>
   </div>
   <div class="iframe-container">
-    <iframe src="graficoc.html" allowfullscreen></iframe>
+    <iframe src="graficoc.html"></iframe>
   </div>
   <!-- Normas del Fantasy -->
   <div id="normas" class="section rules">
