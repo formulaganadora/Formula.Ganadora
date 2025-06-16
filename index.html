@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fórmula Ganadora</title>
+  <meta charset="UTF-8">
+  <title>Revistas</title>
   <style>
     :root {
-      --bg-color: #2c2c2c;
-      --text-color: white;
+      --bg-color: #121212;
+      --text-color: #ffffff;
       --card-bg: #1e1e1e;
-      --accent: #ff3c3c;
-      --link-color: #ffcc00;
-      --update-bg: #eee;
-      --update-text: #222;
+      --accent: #c71515;
+      --link-color: gold;
     }
 
     body.light {
       --bg-color: #f2f2f2;
       --text-color: #111;
-      --card-bg: rgb(249, 174, 174);
-      --accent: #e63946;
-      --link-color: #000000;
-      --update-bg: #ffffff;
-      --update-text: #000000;
+      --card-bg: #ffffff;
+      --accent: #e74c3c;
+      --link-color: #d35400;
     }
 
     * {
@@ -58,56 +54,31 @@
       padding: 10px 15px;
       cursor: pointer;
       border-radius: 8px;
-      transition: background-color 0.3s;
+      transition: background 0.3s;
     }
 
-    nav {
-      background-color: var(--card-bg);
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      padding: 12px 20px;
-      margin: 0 10px;
-      border-radius: 5px;
-      transition: background-color 0.3s;
-    }
-
-    nav a:hover {
-      background-color: var(--accent);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    section.intro {
+    .intro {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 1.2em;
+      padding: 20px;
+      font-size: 1.1em;
     }
 
     .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
     .card {
       background-color: var(--card-bg);
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      width: 300px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-      transition: transform 0.3s;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
     }
 
     .card:hover {
@@ -120,71 +91,41 @@
     }
 
     .card h4 a {
-      color: var(--link-color);
-      text-decoration: none;
       display: block;
       padding: 15px;
+      text-decoration: none;
+      color: var(--link-color);
+      font-size: 1.1em;
+      transition: color 0.3s;
     }
 
-    .updates {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .updates h3 {
-      background-color: var(--accent);
-      padding: 10px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .updates ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .updates li {
-      background-color: var(--update-bg);
-      color: var(--update-text);
-      margin: 8px auto;
-      padding: 10px;
-      width: fit-content;
-      border-radius: 5px;
+    .card h4 a:hover {
+      color: white;
     }
 
     footer {
-      margin-top: 40px;
-      background-color: var(--card-bg);
-      padding: 20px;
       text-align: center;
+      padding: 20px;
+      background-color: var(--card-bg);
+      margin-top: 30px;
     }
 
     footer a {
-      color: var(--link-color);
+      background-color: #ff0000;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
       text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
-    /* Calendario grande */
-    #calendario .card {
-      width: 100%;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .cards {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav {
-        flex-direction: column;
-      }
-
-      nav a {
-        margin: 5px 0;
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
       }
 
       .mode-toggle {
+        padding: 8px 12px;
         top: 10px;
         right: 10px;
       }
@@ -195,142 +136,83 @@
   <button class="mode-toggle" onclick="toggleMode()">🌙 Modo Oscuro / Claro ☀️</button>
 
   <header>
-    <h1>Fórmula Ganadora</h1>
+    <h1>Revistas</h1>
   </header>
 
-  <nav>
-    <a href="newsletters.html">Newsletters</a>
-    <a href="revistas.html">Revistas</a>
-    <a href="ediespeciales.html">Ediciones Especiales</a>
-    <a href="#ventas">Ventas</a>
-    <a href="#calendario">Calendario</a>
-    <a href="#f1">Fórmula 1</a> <!-- Nuevo enlace -->
-    <a href="fantasy1.html">🏎️ Fantasy</a>
-  </nav>
+  <section class="intro">
+    Con su suscripción, usted podrá entrar a este panel y tener todas las revistas.
+  </section>
 
-  <div class="container">
-    <section class="intro">
-      <p>
-        Con su suscripción, usted podrá entrar a este panel y tener todas las revistas. Si quiere renovar su suscripción envíenos un correo.
-      </p>
-    </section>
-
-    <section class="cards">
-      <div class="card">
-        <img src="img/Newsletters/n0311.png" alt="Newsletter" />
-        <h4><a href="newsletters.html">Newsletters</a></h4>
-      </div>
-      <div class="card">
-        <img src="img/Revista Marzo 2025/por.png" alt="Revista Agosto" />
-        <h4><a href="revistas.html">Revistas</a></h4>
-      </div>
-      <div class="card">
-        <img src="img/Escuderías/3.png" alt="Ediciones Especiales" />
-        <h4><a href="ediespeciales.html">Ediciones especiales</a></h4>
-      </div>
-    </section>
-
-    <section class="updates">
-      <h3>Actualizaciones</h3>
-      <ul>
-        <li>La revista de marzo ya está disponible</li>
-        <li>La revista de McLaren ya está en venta</li>
-        <li>Debido a problemas técnicos, la revista de abril estará disponible el día 12 de mayo</li>
-      </ul>
-    </section>
-
-    <section class="cards" id="ventas">
-      <div class="card">
-        <img src="img/VENTAS.png" alt="Ventas" />
-        <h4>Ventas</h4>
-      </div>
-    </section>
-      <br>
-    <section class="cards" id="calendario">
-      <div class="card">
-        <img src="img/Calendario 2025/5.png" alt="Calendario" style="width: 100%; height: auto;" />
-        <h4>Calendario</h4>
-      </div>
-    </section>
-      <br>
-    <section class="cards" id="Fantasy" >
-      <div class="card" style="border: 2px solid var(--accent); box-shadow: 0 0 15px rgba(255, 60, 60, 0.5);">
-        <img src="img/fg.png" alt="Fantasy F1" />
-        <h4><a href="fantasy.html">🔥 Entra al Fantasy F1</a></h4>
-      </div>      
-    </section>
-
-    <!-- NUEVA SECCIÓN: Fórmula 1 -->
-    <section class="updates" id="f1">
-      <h3>Fórmula 1: Clasificación</h3>
-
-      <h4>Clasificación de Pilotos</h4>
-      <table style="margin: 20px auto; border-collapse: collapse; width: 90%; max-width: 700px; background-color: var(--card-bg); color: var(--text-color);">
-        <thead>
-          <tr style="background-color: var(--accent); color: white;">
-            <th style="padding: 10px;">Posición</th>
-            <th style="padding: 10px;">Piloto</th>
-            <th style="padding: 10px;">Equipo</th>
-            <th style="padding: 10px;">Puntos</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding: 10px;">1</td>
-            <td style="padding: 10px;">Oscar Piastri</td>
-            <td style="padding: 10px;">McLaren</td>
-            <td style="padding: 10px;">131</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px;">2</td>
-            <td style="padding: 10px;">Lando Norris</td>
-            <td style="padding: 10px;">McLaren</td>
-            <td style="padding: 10px;">115</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px;">3</td>
-            <td style="padding: 10px;">Max Verstappen</td>
-            <td style="padding: 10px;">Red Bull</td>
-            <td style="padding: 10px;">99</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h4>Clasificación de Constructores</h4>
-      <table style="margin: 20px auto; border-collapse: collapse; width: 90%; max-width: 700px; background-color: var(--card-bg); color: var(--text-color);">
-        <thead>
-          <tr style="background-color: var(--accent); color: white;">
-            <th style="padding: 10px;">Posición</th>
-            <th style="padding: 10px;">Equipo</th>
-            <th style="padding: 10px;">Puntos</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding: 10px;">1</td>
-            <td style="padding: 10px;">McLaren</td>
-            <td style="padding: 10px;">246</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px;">2</td>
-            <td style="padding: 10px;">Mercedes</td>
-            <td style="padding: 10px;">141</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px;">3</td>
-            <td style="padding: 10px;">Red Bull</td>
-            <td style="padding: 10px;">105</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    <!-- FIN DE NUEVA SECCIÓN -->
-
-  </div>
+  <section class="cards">
+    <h2 style="grid-column: 1 / -1; text-align: center; margin-top: 30px;">Revistas 2024</h2>
+  
+    <div class="card">
+      <img src="img/REVISTA Febrero 2024/portadaf.png" alt="Revista Febrero">
+      <h4><a href="frevista022024.html">Febrero</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/REVISTA Marzo 2024/portadamarzo.png" alt="Revista Marzo">
+      <h4><a href="frevista032024.html">Marzo</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Abril 2024/portada.png" alt="Revista Abril">
+      <h4><a href="frevista042024.html">Abril</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Mayo 2024/portada.png" alt="Revista Mayo">
+      <h4><a href="frevista052024.html">Mayo</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Junio 2024/portada.png" alt="Revista Junio">
+      <h4><a href="frevista062024.html">Junio</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Julio 2024/portada.png" alt="Revista Julio">
+      <h4><a href="frevista072024.html">Julio</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Agosto 2024/portadaa.png" alt="Revista Agosto">
+      <h4><a href="frevista082024.html">Agosto</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Septiembre 2024/poratada.png" alt="Revista Septiembre">
+      <h4><a href="frevista092024.html">Septiembre</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/REVISTA Octubre 2024/portada.png" alt="Revista Octubre">
+      <h4><a href="frevista102024.html">Octubre</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Noviembre 2024/port.png" alt="Revista Noviembre">
+      <h4><a href="frevista112024.html">Noviembre</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Diciembre 2024/portada.png" alt="Revista Diciembre">
+      <h4><a href="frevista122024.html">Diciembre</a></h4>
+    </div>
+  
+    <h2 style="grid-column: 1 / -1; text-align: center; margin-top: 50px;">Revistas 2025</h2>
+  
+    <div class="card">
+      <img src="img/Revista Enero 2025/port.png" alt="Revista Enero">
+      <h4><a href="frevista012025.html">Enero</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Febrero 2025/port.png" alt="Revista Febrero 2025">
+      <h4><a href="frevista022025.html">Febrero</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/Revista Marzo 2025/por.png" alt="Revista Marzo 2025">
+      <h4><a href="frevista032025.html">Marzo</a></h4>
+    </div>
+    <div class="card">
+      <img src="img/REVISTA Abril 2025/por.png" alt="Revista Abril 2025">
+      <h4><a href="frevista042025.html">Abril</a></h4>
+    </div>
+  </section>
 
   <footer>
-    Para solicitar cualquier cosa diríjase a
-    <a href="mailto:formulaganadora.info@gmail.com">formulaganadora.info@gmail.com</a>
+    <a href="index.html">← Volver a la página de inicio</a>
   </footer>
 
   <script>
@@ -339,7 +221,6 @@
       localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
     }
 
-    // Cargar preferencia
     window.onload = () => {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme === "light") {
