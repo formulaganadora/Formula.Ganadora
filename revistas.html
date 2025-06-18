@@ -54,7 +54,6 @@
       padding: 10px 15px;
       cursor: pointer;
       border-radius: 8px;
-      transition: 0.3s;
     }
 
     .intro {
@@ -95,8 +94,6 @@
       padding: 15px;
       text-decoration: none;
       color: var(--link-color);
-      font-size: 1.1em;
-      transition: color 0.3s;
     }
 
     .card h4 a:hover {
@@ -116,30 +113,11 @@
       padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
     }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2em;
-      }
-
-      .mode-toggle {
-        padding: 8px 12px;
-        top: 10px;
-        right: 10px;
-      }
-    }
-    .revista-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-
   </style>
 </head>
 <body>
-  <button class="mode-toggle" onclick="toggleMode()">🌙 Modo Oscuro / Claro ☀️</button>
+  <button class="mode-toggle" onclick="document.body.classList.toggle('light')">🌙 Modo Oscuro / Claro ☀️</button>
 
   <header>
     <h1>Revistas</h1>
@@ -150,73 +128,73 @@
   </section>
 
   <section class="cards">
-    <h2 style="grid-column: 1 / -1; text-align: center; margin-top: 30px;">Revistas 2024</h2>
-  
+    <h2 style="grid-column: 1 / -1; text-align: center;">Revistas 2024</h2>
+
     <div class="card">
-      <img src="img/REVISTA Febrero 2024/portadaf.png" alt="Revista Febrero">
+      <img src="img/REVISTA Febrero 2024/portadaf.png" alt="Febrero">
       <h4><a href="frevista022024.html">Febrero</a></h4>
     </div>
     <div class="card">
-      <img src="img/REVISTA Marzo 2024/portadamarzo.png" alt="Revista Marzo">
+      <img src="img/REVISTA Marzo 2024/portadamarzo.png" alt="Marzo">
       <h4><a href="frevista032024.html">Marzo</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Abril 2024/portada.png" alt="Revista Abril">
+      <img src="img/Revista Abril 2024/portada.png" alt="Abril">
       <h4><a href="frevista042024.html">Abril</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Mayo 2024/portada.png" alt="Revista Mayo">
+      <img src="img/Revista Mayo 2024/portada.png" alt="Mayo">
       <h4><a href="frevista052024.html">Mayo</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Junio 2024/portada.png" alt="Revista Junio">
+      <img src="img/Revista Junio 2024/portada.png" alt="Junio">
       <h4><a href="frevista062024.html">Junio</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Julio 2024/portada.png" alt="Revista Julio">
+      <img src="img/Revista Julio 2024/portada.png" alt="Julio">
       <h4><a href="frevista072024.html">Julio</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Agosto 2024/portadaa.png" alt="Revista Agosto">
+      <img src="img/Revista Agosto 2024/portadaa.png" alt="Agosto">
       <h4><a href="frevista082024.html">Agosto</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Septiembre 2024/poratada.png" alt="Revista Septiembre">
+      <img src="img/Revista Septiembre 2024/poratada.png" alt="Septiembre">
       <h4><a href="frevista092024.html">Septiembre</a></h4>
     </div>
     <div class="card">
-      <img src="img/REVISTA Octubre 2024/portada.png" alt="Revista Octubre">
+      <img src="img/REVISTA Octubre 2024/portada.png" alt="Octubre">
       <h4><a href="frevista102024.html">Octubre</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Noviembre 2024/port.png" alt="Revista Noviembre">
+      <img src="img/Revista Noviembre 2024/port.png" alt="Noviembre">
       <h4><a href="frevista112024.html">Noviembre</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Diciembre 2024/portada.png" alt="Revista Diciembre">
+      <img src="img/Revista Diciembre 2024/portada.png" alt="Diciembre">
       <h4><a href="frevista122024.html">Diciembre</a></h4>
     </div>
-  
-    <h2 style="grid-column: 1 / -1; text-align: center; margin-top: 50px;">Revistas 2025</h2>
-  
+
+    <h2 style="grid-column: 1 / -1; text-align: center;">Revistas 2025</h2>
+
     <div class="card">
-      <img src="img/Revista Enero 2025/port.png" alt="Revista Enero">
+      <img src="img/Revista Enero 2025/port.png" alt="Enero">
       <h4><a href="frevista012025.html">Enero</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Febrero 2025/port.png" alt="Revista Febrero 2025">
+      <img src="img/Revista Febrero 2025/port.png" alt="Febrero">
       <h4><a href="frevista022025.html">Febrero</a></h4>
     </div>
     <div class="card">
-      <img src="img/Revista Marzo 2025/por.png" alt="Revista Marzo 2025">
+      <img src="img/Revista Marzo 2025/por.png" alt="Marzo">
       <h4><a href="frevista032025.html">Marzo</a></h4>
     </div>
     <div class="card">
-      <img src="img/REVISTA Abril 2025/por.png" alt="Revista Abril 2025">
+      <img src="img/REVISTA Abril 2025/por.png" alt="Abril">
       <h4><a href="frevista042025.html">Abril</a></h4>
     </div>
     <div class="card">
-      <img src="img/REVISTA Mayo 2025/por.png" alt="Revista Mayo 2025">
+      <img src="img/REVISTA Mayo 2025/por.png" alt="Mayo">
       <h4><a href="frevista052025.html">Mayo</a></h4>
     </div>
   </section>
@@ -224,70 +202,5 @@
   <footer>
     <a href="index.html">← Volver a la página de inicio</a>
   </footer>
-
-  <script type="module">
-  import { auth, db } from './firebase.js';
-  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
-  import { doc, getDoc, setDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
-
-  const todasLasRevistas = [
-    { id: "febrero2024", titulo: "Febrero", imagen: "img/REVISTA Febrero 2024/portadaf.png", enlace: "frevista022024.html" },
-    { id: "marzo2024", titulo: "Marzo", imagen: "img/REVISTA Marzo 2024/portadamarzo.png", enlace: "frevista032024.html" },
-    { id: "abril2024", titulo: "Abril", imagen: "img/Revista Abril 2024/portada.png", enlace: "frevista042024.html" },
-    // Agrega más aquí con el mismo formato...
-  ];
-
-  const contenedorCompradas = document.getElementById("compradas");
-  const contenedorNoCompradas = document.getElementById("no-compradas");
-
-  function crearCard(revista, comprada, uid) {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = 
-      <img src="${revista.imagen}" alt="Portada ${revista.titulo}">
-      <h4>${comprada ? <a href="${revista.enlace}">${revista.titulo}</a> : revista.titulo}</h4>
-      ${!comprada ? <button onclick="comprarRevista('${revista.id}', '${uid}')">Comprar</button> : ""}
-    ;
-    return div;
-  }
-
-  window.comprarRevista = async (revistaId, uid) => {
-    const userRef = doc(db, "usuarios", uid);
-    await updateDoc(userRef, {
-      revistas: arrayUnion(revistaId)
-    });
-    location.reload(); // Recarga para mostrar la revista en “compradas”
-  };
-
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const uid = user.uid;
-      const userRef = doc(db, "usuarios", uid);
-      const userSnap = await getDoc(userRef);
-
-      let revistasCompradas = [];
-
-      if (userSnap.exists()) {
-        revistasCompradas = userSnap.data().revistas || [];
-      } else {
-        // Crea doc vacío si no existe
-        await setDoc(userRef, { revistas: [] });
-      }
-
-      todasLasRevistas.forEach(r => {
-        const esComprada = revistasCompradas.includes(r.id);
-        const card = crearCard(r, esComprada, uid);
-        if (esComprada) {
-          contenedorCompradas.appendChild(card);
-        } else {
-          contenedorNoCompradas.appendChild(card);
-        }
-      });
-
-    } else {
-      window.location.href = "login.html";
-    }
-  });
-</script>
 </body>
 </html>
