@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Encuesta de Satisfacción</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #6dd5ed, #2193b0);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    textarea, select {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 8px;
+      resize: vertical;
+      margin-top: 0.3rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #fff;
+      color: #2193b0;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <form class="form-container" action="https://formsubmit.co/formulaganadora.info@gmail.com" method="POST">
+    <h2>Encuesta de Satisfacción</h2>
+
+    <!-- Ocultar campos automáticos de FormSubmit -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="box">
+    <input type="hidden" name="_subject" value="Nueva respuesta de encuesta">
+    <input type="hidden" name="_next" value="https://formulaganadora.github.io/Formula.Ganadora/">
+
+    <label>¿Cómo calificarías tu experiencia?</label>
+    <label><input type="radio" name="satisfaccion" value="Excelente" required> Excelente</label>
+    <label><input type="radio" name="satisfaccion" value="Buena"> Buena</label>
+    <label><input type="radio" name="satisfaccion" value="Regular"> Regular</label>
+    <label><input type="radio" name="satisfaccion" value="Mala"> Mala</label>
+
+    <label>¿Qué aspectos te gustaron más? (elige todos los que apliquen)</label>
+    <textarea name="gustos" rows="4" placeholder="Tu respuesta></textarea>
+
+    <label>¿Qué podemos mejorar?</label>
+    <textarea name="mejoras" rows="3" placeholder="Tus sugerencias..." required></textarea>
+
+    <label>¿Recomendarías nuestro servicio?</label>
+    <select name="recomendacion" required>
+      <option value="">Selecciona una opción</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+      <option value="Tal vez">Tal vez</option>
+    </select>
+
+    <label>¿Quieres renovar tu suscripción?</label>
+    <select name="recomendacion" required>
+      <option value="">Selecciona una opción</option>
+      <option value="Diciembre">Hasta diciembre, 31.5 euros, rebajado a 30</option>
+      <option value="Octubre">Hasta octubre, 17.5 euros</option>
+      <option value="No">No</option>
+    </select>
+
+    <button type="submit">Enviar encuesta</button>
+  </form>
+</body>
+</html>
