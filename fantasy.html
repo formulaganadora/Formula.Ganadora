@@ -102,38 +102,38 @@
 
   <script>
     const pilotos = {
-      "Pierre Gasly": 9.8,
-      "Franco Colapinto": 7.1,
-      "Fernando Alonso": 13,
-      "Lance Stroll": 12.7,
-      "Charles Leclerc": 28.3,
-      "Lewis Hamilton": 21,
-      "Esteban Ocon": 11,
-      "Ollie Bearman": 8.5,
-      "Lando Norris": 41.2,
-      "Oscar Piastri": 41.3,
-      "George Russell": 34.7,
-      "Kimi Antonelli": 17.9,
-      "Liam Lawson": 14.1,
-      "Isack Hadjar": 15.6,
-      "Max Verstappen": 38.3,
-      "Yuki Tsunoda": 11.5,
+      "Pierre Gasly": 9.4,
+      "Franco Colapinto": 6.9,
+      "Fernando Alonso": 13.2,
+      "Lance Stroll": 12.3,
+      "Charles Leclerc": 30.4,
+      "Lewis Hamilton": 21.6,
+      "Esteban Ocon": 10.7,
+      "Ollie Bearman": 8.2,
+      "Lando Norris": 43.1,
+      "Oscar Piastri": 41.9,
+      "George Russell": 34.4,
+      "Kimi Antonelli": 16.3,
+      "Liam Lawson": 14.5,
+      "Isack Hadjar": 15.1,
+      "Max Verstappen": 33.3,
+      "Yuki Tsunoda": 10.9,
       "Nico Hülkenberg": 12.2,
-      "Gabriel Bortoleto": 5.7,
-      "Carlos Sainz": 12.6,
-      "Alexander Albon": 13.2
+      "Gabriel Bortoleto": 5.8,
+      "Carlos Sainz": 11.6,
+      "Alexander Albon": 12.1
     };
 
     const constructores = {
-      "Red Bull": 28.7,
-      "Ferrari": 24.6,
-      "Mercedes": 23.7,
-      "McLaren": 34.6,
-      "Aston Martin": 12.9,
-      "RB": 14.3,
-      "Haas": 11,
-      "Williams": 13.6,
-      "Alpine": 9,
+      "Red Bull": 26.7,
+      "Ferrari": 26.1,
+      "Mercedes": 22.3,
+      "McLaren": 35.6,
+      "Aston Martin": 12.8,
+      "RB": 14.2,
+      "Haas": 10.9,
+      "Williams": 12.4,
+      "Alpine": 8.8,
       "Kick Sauber": 7.5
     };
 
@@ -196,7 +196,7 @@
     }
 
     function iniciarContador() {
-      const fechaProximaCarrera = new Date("Jun 28, 2025 16:00:00").getTime();
+      const fechaProximaCarrera = new Date("Jul 05, 2025 16:00:00").getTime();
       const intervalo = setInterval(() => {
         const ahora = new Date().getTime();
         const diferencia = fechaProximaCarrera - ahora;
