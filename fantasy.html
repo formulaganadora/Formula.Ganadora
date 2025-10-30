@@ -102,39 +102,39 @@
 
   <script>
     const pilotos = {
-      "Pierre Gasly": 7.2,
-      "Franco Colapinto": 5.1,
-      "Fernando Alonso": 11.9,
-      "Lance Stroll": 10.8,
-      "Charles Leclerc": 35.1,
-      "Lewis Hamilton": 20.1,
-      "Esteban Ocon": 7.9,
-      "Ollie Bearman": 6.5,
-      "Lando Norris": 42,
-      "Oscar Piastri": 41,
-      "George Russell": 38.1,
-      "Kimi Antonelli": 11.9,
-      "Liam Lawson": 13,
-      "Isack Hadjar": 13.2,
-      "Max Verstappen": 40.7,
-      "Yuki Tsunoda": 8.3,
-      "Nico Hülkenberg": 11.6,
-      "Gabriel Bortoleto": 5.7,
-      "Carlos Sainz": 9.1,
-      "Alexander Albon": 10
+      "Pierre Gasly": 6.9,
+      "Franco Colapinto": 4.9,
+      "Fernando Alonso": 11.2,
+      "Lance Stroll": 10.5,
+      "Charles Leclerc": 38.3,
+      "Lewis Hamilton": 19.9,
+      "Esteban Ocon": 8.1,
+      "Ollie Bearman": 7.1,
+      "Lando Norris": 43.9,
+      "Oscar Piastri": 39.4,
+      "George Russell": 37.3,
+      "Kimi Antonelli": 11.8,
+      "Liam Lawson": 12.2,
+      "Isack Hadjar": 12.8,
+      "Max Verstappen": 39.9,
+      "Yuki Tsunoda": 7.9,
+      "Nico Hülkenberg": 11,
+      "Gabriel Bortoleto": 5,
+      "Carlos Sainz": 8.4,
+      "Alexander Albon": 9.5
     };
 
     const constructores = {
-      "Alpine": 7.2,
-      "Aston Martin": 11.3,
-      "Ferrari": 26.9,
-      "Haas": 9.4,
-      "McLaren": 31.2,
-      "Mercedes": 20.3,
-      "Racing Bulls": 13,
-      "Red Bull": 34.6,
-      "Kick Sauber": 6.6,
-      "Williams": 10.9
+      "Alpine": 7.1,
+      "Aston Martin": 10.7,
+      "Ferrari": 28.5,
+      "Haas": 9.5,
+      "McLaren": 30.9,
+      "Mercedes": 19.9,
+      "Racing Bulls": 12.4,
+      "Red Bull": 34.3,
+      "Kick Sauber": 6.3,
+      "Williams": 10.2
     };
 
     const piloto1Select = document.getElementById("piloto1");
@@ -196,7 +196,7 @@
     }
 
     function iniciarContador() {
-      const fechaProximaCarrera = new Date("Oct 25, 2025 23:00:00").getTime();
+      const fechaProximaCarrera = new Date("Nov 07, 2025 19:30:00").getTime();
       const intervalo = setInterval(() => {
         const ahora = new Date().getTime();
         const diferencia = fechaProximaCarrera - ahora;
@@ -207,7 +207,7 @@
         const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
         document.getElementById("countdown").innerHTML =
-          `Límite para introducir el equipo para México🏁: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
+          `Límite para introducir el equipo para Brasil🏁: ${dias}d ${horas}h ${minutos}m ${segundos}s`;
 
         if (diferencia < 0) {
           clearInterval(intervalo);
