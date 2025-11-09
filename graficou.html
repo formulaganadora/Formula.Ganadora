@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Fantasy F1 - Clasificación Usuarios</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #f4f4f4, #e9ecef);
+      color: #333;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #ff0000;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 25px;
+      margin: 25px 0;
+    }
+
+    canvas {
+      width: 100%;
+      height: 250px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏎️ Fantasy F1 - Resultados hasta México</h1>
+
+  <div class="card">
+    <h2>🏁 Clasificación General</h2>
+    <canvas id="clasificacionChart"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>📊 Puntos por Jornada</h2>
+    <div id="miniCharts" class="mini-grid"></div>
+  </div>
+
+  <script>
+  const carreras = [
+    "Arabia Saudí", "Miami", "Imola", "Mónaco", "España",
+    "Canadá", "Austria", "Gran Bretaña", "Bélgica", "Hungría",
+    "Países Bajos", "Italia", "Azerbaiyán", "Singapur",
+    "Estados Unidos", "México"
+  ];
+
+  const jugadores = {
+    "Javi": [0, 15.5, 17, 22, 26, -1, -7, 14, 29.5, 15, 10, 20, 12, 18, 28, 20],
+    "Miki R.": [0, 25, 14, 6, 10, 10, 17, 13, 32, 17, 17, 12, 12, 10, 9, 18],
+    "Sevi": [0, 21, 13, 22, 8, 14, 0, 6, 0, 19, 4, 23, 7, 18, 27, 12],
+    "Nieto": [0, 16.5, 10, 11, 3, 10, -2, 13, 29.5, 16, 4, 15, 0, 20, 23, 0],
+    "Eric": [0, 0, 10, 24, 23, 10, 0, 13, 0, 25, 4, 15, 0, 23, 20.5, 0],
+    "Andrés": [0, 21, 0, 0, 18, 12, 0, 15, 29.5, 16, 4, 20, 0, 20, 0, 0],
+    "Javi Ozores": [0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 22, 14, 18, 30.5, 16, 0],
+    "Sergio N.": [16, 0, 0, 17, 6, 14, 0, 0, 0, 0, 10, 0, 20, 0, 0, 0],
+    "Lucas": [0, 15, 0, 8, 6, 7, 0, 0, 0, 15, 4, 0, 0, 20, 0, 0],
+    "Antonio": [0, 0, 0, 0, 0, 0, 0, 0, 14, 20, 0, 0, 21, 18, 0, 0],
+    "Fernando": [0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 4, 0, 0, 14, 18, 0],
+    "Samu": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 28, 0, 0],
+    "Edumendas": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 15, 0, 0, 0],
+    "Magdalena del Riego": [0, 16.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "Rodrigo B.": [0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  };
+
+  const colores = [
+    '#ff3b3b', '#ff7f00', '#00a2ff', '#ffc300', '#00994d', '#8000ff',
+    '#ff66cc', '#00cc99', '#ff5050', '#9999ff', '#66ff66', '#ffcc00',
+    '#6699ff', '#cc0000', '#ff9999'
+  ];
+
+  function acumulado(puntos) {
+    let total = 0;
+    return puntos.map(p => total += p);
+  }
+
+  const datasetsClasificacion = Object.keys(jugadores).map((nombre, i) => ({
+    label: nombre,
+    data: acumulado(jugadores[nombre]),
+    borderColor: colores[i % colores.length],
+    backgroundColor: colores[i % colores.length] + '33',
+    borderWidth: 2,
+    fill: false,
+    tension: 0.3
+  }));
+
+  new Chart(document.getElementById('clasificacionChart'), {
+    type: 'line',
+    data: { labels: carreras, datasets: datasetsClasificacion },
+    options: {
+      plugins: {
+        legend: { position: 'bottom' },
+        title: { display: true, text: 'Evolución de puntos acumulados' }
+      },
+      scales: { y: { beginAtZero: true } }
+    }
+  });
+
+  // === Mini gráficos con colores para top 3 ===
+  const container = document.getElementById('miniCharts');
+
+  carreras.forEach((carrera, idx) => {
+    const div = document.createElement('div');
+    div.innerHTML = `<h3 style="text-align:center">${carrera}</h3><canvas id="chart_${idx}"></canvas>`;
+    container.appendChild(div);
+
+    const puntuaciones = Object.entries(jugadores)
+      .map(([nombre, puntos]) => ({ nombre, valor: puntos[idx] ?? 0 }))
+      .filter(d => d.valor !== 0)
+      .sort((a, b) => b.valor - a.valor);
+
+    const coloresBarras = puntuaciones.map((_, i) => {
+      if (i === 0) return '#28a745'; // 🥇 verde
+      if (i === 1) return '#ffc107'; // 🥈 amarillo
+      if (i === 2) return '#fd7e14'; // 🥉 naranja
+      return '#ff3b3b99'; // resto
+    });
+
+    new Chart(document.getElementById(`chart_${idx}`), {
+      type: 'bar',
+      data: {
+        labels: puntuaciones.map(d => d.nombre),
+        datasets: [{
+          data: puntuaciones.map(d => d.valor),
+          backgroundColor: coloresBarras
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, display: false },
+          x: { ticks: { color: '#333', font: { size: 10 } } }
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
