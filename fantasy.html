@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -102,39 +102,39 @@
 
   <script>
     const pilotos = {
-      "Pierre Gasly": 6.9,
-      "Franco Colapinto": 4.9,
-      "Fernando Alonso": 11.2,
-      "Lance Stroll": 10.5,
-      "Charles Leclerc": 38.3,
-      "Lewis Hamilton": 19.9,
-      "Esteban Ocon": 8.1,
-      "Ollie Bearman": 7.1,
-      "Lando Norris": 43.9,
-      "Oscar Piastri": 39.4,
-      "George Russell": 37.3,
-      "Kimi Antonelli": 11.8,
-      "Liam Lawson": 12.2,
-      "Isack Hadjar": 12.8,
-      "Max Verstappen": 39.9,
-      "Yuki Tsunoda": 7.9,
-      "Nico Hülkenberg": 11,
-      "Gabriel Bortoleto": 5,
-      "Carlos Sainz": 8.4,
-      "Alexander Albon": 9.5
+      "Pierre Gasly": 7.1,
+      "Franco Colapinto": 4.7,
+      "Fernando Alonso": 11.1,
+      "Lance Stroll": 10.3,
+      "Charles Leclerc": 36.8,
+      "Lewis Hamilton": 18.7,
+      "Esteban Ocon": 7.8,
+      "Ollie Bearman": 7.2,
+      "Lando Norris": 50.2,
+      "Oscar Piastri": 37.4,
+      "George Russell": 39.5,
+      "Kimi Antonelli": 13.8,
+      "Liam Lawson": 12.4,
+      "Isack Hadjar": 12.9,
+      "Max Verstappen": 40.8,
+      "Yuki Tsunoda": 7.5,
+      "Nico Hülkenberg": 11.0,
+      "Gabriel Bortoleto": 5.3,
+      "Carlos Sainz": 8.0,
+      "Alexander Albon": 9.0
     };
 
     const constructores = {
-      "Alpine": 7.1,
-      "Aston Martin": 10.7,
-      "Ferrari": 28.5,
-      "Haas": 9.5,
-      "McLaren": 30.9,
-      "Mercedes": 19.9,
-      "Racing Bulls": 12.4,
+      "Alpine": 7.0,
+      "Aston Martin": 10.6,
+      "Ferrari": 26.6,
+      "Haas": 9.4,
+      "McLaren": 31.6,
+      "Mercedes": 21.7,
+      "Racing Bulls": 12.5,
       "Red Bull": 34.3,
-      "Kick Sauber": 6.3,
-      "Williams": 10.2
+      "Sauber": 6.0,
+      "Williams": 9.9
     };
 
     const piloto1Select = document.getElementById("piloto1");
@@ -220,7 +220,6 @@
       llenarSelects();
       piloto1Select.addEventListener("change", actualizarPiloto2);
 
-      // Aseguramos que cualquier cambio activa la validación, útil para móviles
       [piloto1Select, piloto2Select, constructorSelect].forEach(el => {
         el.addEventListener("change", calcularTotal);
         el.addEventListener("input", calcularTotal);
