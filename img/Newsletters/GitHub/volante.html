@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Árbol Genealógico</title>
+  <style>
+    /* ====== Estilos básicos ====== */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    /* Contenedor general del árbol */
+    .tree {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+
+    /* Nodo (persona) */
+    .node {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      width: 150px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .birth {
+      font-size: 0.9em;
+      color: gray;
+    }
+
+    /* Conector vertical */
+    .line {
+      width: 2px;
+      height: 20px;
+      background-color: #ccc;
+      margin: 0 auto;
+    }
+
+    /* Contenedor hijos */
+    .children {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Árbol Genealógico</h1>
+
+  <!-- Contenedor donde se generará el árbol -->
+  <div id="familyTree" class="tree"></div>
+
+  <script>
+    // ====== Datos del árbol ======
+    // Cada persona tiene: id, nombre, fecha de nacimiento, hijos
+    const data = [
+      { id: "1", name: "", birth: "1950-04-12", children: ["2", "3"] },
+      { id: "2", name: "Juan Pérez", birth: "1975-06-01", children: ["4"] },
+      { id: "3", name: "Ana Pérez", birth: "1978-09-15", children: [] },
+      { id: "4", name: "Lucía García", birth: "2001-12-05", children: [] }
+    ];
+
+    // ====== Función para construir el árbol ======
+    function buildTree(data) {
+      const map = new Map();
+      data.forEach(person => map.set(person.id, { ...person, childrenNodes: [] }));
+
+      // enlazar hijos con sus nodos reales
+      map.forEach(person => {
+        person.children.forEach(cid => {
+          if (map.has(cid)) {
+            person.childrenNodes.push(map.get(cid));
+          }
+        });
+      });
+
+      // detectar raíces (no son hijos de nadie)
+      const allChildIds = new Set(data.flatMap(p => p.children));
+      const roots = [...map.values()].filter(p => !allChildIds.has(p.id));
+
+      return roots;
+    }
+
+    // ====== Función recursiva para dibujar un nodo ======
+    function createNodeElement(person) {
+      const container = document.createElement("div");
+      container.className = "node-container";
+      container.style.display = "flex";
+      container.style.flexDirection = "column";
+      container.style.alignItems = "center";
+
+      const nodeEl = document.createElement("div");
+      nodeEl.className = "node";
+      nodeEl.innerHTML = `
+        <div class="name">${person.name}</div>
+        <div class="birth">${person.birth}</div>
+      `;
+      container.appendChild(nodeEl);
+
+      if (person.childrenNodes.length > 0) {
+        const line = document.createElement("div");
+        line.className = "line";
+        container.appendChild(line);
+
+        const childrenEl = document.createElement("div");
+        childrenEl.className = "children";
+        person.childrenNodes.forEach(child => {
+          childrenEl.appendChild(createNodeElement(child));
+        });
+        container.appendChild(childrenEl);
+      }
+
+      return container;
+    }
+
+    // ====== Generar el árbol ======
+    const roots = buildTree(data);
+    const treeContainer = document.getElementById("familyTree");
+    roots.forEach(root => {
+      treeContainer.appendChild(createNodeElement(root));
+    });
+  </script>
+
+</body>
+</html>
